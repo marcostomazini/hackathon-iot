@@ -69,9 +69,9 @@ define([
         $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
 
             if (nextRoute.access===undefined) {
-                $location.path("/login");
+                $location.path("/home");
             }else if (nextRoute.access.requiredLogin && !AuthenticationService.isLogged()) {
-                $location.path("/login");
+                $location.path("/home");
             }else if (AuthenticationService.isLogged() && !nextRoute.access.requiredLogin) {
                 $location.path("/home");
             }
