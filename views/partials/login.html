@@ -7,6 +7,9 @@
 				<span class="white" id="id-text2">Web</span>
 			</h4>
 		</div>
+
+		<input id="publish" type="button" value="Publish">
+		<ul id="messages"></ul>
 	</div><!-- /.col -->
 </div><!-- /.row -->
 
@@ -26,6 +29,15 @@ jQuery(function($) {
 	
 	$('#id-text2').attr('class', 'grey');
 	$('#id-company-text').attr('class', 'blue');	 
- 
+
+
+	var es = new EventSource('/api/stream');
+	es.onmessage = function(e) { 
+    	$('#messages').append("<li>" + e.data + "</li>") 
+	}
+  	$("#publish").click(function () {
+	    $.post("/api/publish")
+  	})
+
 });
 </script>
