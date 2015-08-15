@@ -20,6 +20,12 @@ module.exports = function(app, passport, models) {
     app.get('/api/sensores', showClientRequest, api.getSensores);
 
     app.post('/api/sensores', showClientRequest, api.sensores);
+
+
+    app.get('/api/stream', showClientRequest, api.stream);
+
+    app.post('/api/publish', showClientRequest, api.publish);
+
     
     function showClientRequest(req, res, next) {
         var request = {

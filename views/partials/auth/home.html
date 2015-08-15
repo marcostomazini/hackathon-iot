@@ -1,5 +1,19 @@
 
 <div class="container-fluid">
+
+
+	<input id="publish" type="button" value="Publish">
+	<ul id="messages"></ul>
+
+<script type="text/javascript">
+	var es = new EventSource('/api/stream');
+  es.onmessage = function(e) { 
+    $('#messages').append("<li>" + e.data + "</li>") 
+  }
+  $("#publish").click(function () {
+    $.post("/api/publish")
+  })
+</script>
 </div>
 
 
