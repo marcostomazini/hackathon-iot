@@ -1,0 +1,36 @@
+{
+  "dashboard": {
+    "WELCOME": "Seja bem vindo ao {{appName}}"
+  },
+  "topbar": {
+    "search": {
+      "PLACEHOLDER": "Digite e pressione enter para pesquisar.."
+    }
+  },
+  "sidebar": {
+    "WELCOME": "Seja bem vindo"
+  },
+  "button": {
+    "SAVE": "Salvar",
+    "DISCARD": "Descartar"
+  },
+  "geral": {
+    "HOME": "Inicio",
+    "EDIT": "Editar",
+    "INSERT": "Inserir",
+    "LIST": "Listagem",
+    "BASIC": "Informações básicas",
+    "PROFILE": "Perfil",
+    "FIRST_NAME": "Primeiro nome",
+    "LAST_NAME": "Último nome",
+    "EMAIL": "Email",
+    "USERNAME": "Usuário",
+    "TYPE": "Digite...",
+    "ENTERPRISE_DEFAULT": "Empresa padrão"
+  },  
+  "enterprise": {
+    "CNPJ": "Cnpj",
+    "NAME": "Nome da empresa",
+    "ENTERPRISES": "Empresas"
+  }
+}

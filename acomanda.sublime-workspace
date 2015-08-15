@@ -1,0 +1,425 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fun",
+				"function"
+			],
+			[
+				"form",
+				"formatted_address"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"err",
+				"error"
+			],
+			[
+				"er",
+				"error"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/views/produto.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/produto/produtos.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/vendor/chosen_v1.2.0/chosen.jquery.min.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/controllers/produto.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/routes/produto/produtos.server.routes.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/less/angle/app.less",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/less/angle/app/plugins.less",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/core/config/core.client.routes.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/produto/categorias.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/routes/produto/categorias.server.routes.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/core/config/core.client.constants.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/models/produto/produto.server.model.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/vendor/angular-chosen-localytics/chosen.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/views/produto.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/empresas/views/create-empresa.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/core/services/acomanda.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/models/user.server.model.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/cartoes/views/create-cartao.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/produtos.client.module.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/config/produto.client.config.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/config/express.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/config/produto.client.routes.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/core/controllers/app.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/controllers/cliente.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/controllers/produtos.edit.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/categorias/controllers/categorias.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/controllers/produtos.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/controllers/produtos.create.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/views/edit-produto.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/views/create-produto.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/config/env/all.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/users/users.password.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/config/passport.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/views/cliente.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/controllers/clientes.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/config/cadastros.client.routes.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/clientes.client.module.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/views/edit-cliente.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/views/create-cliente.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/views/create-edit-cliente.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/controllers/clientes.edit.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/controllers/clientes.create.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/categorias/views/create-categoria.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/categorias/controllers/categorias.create.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/core.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/produto/setores.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/produto/unidades-medida.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/controllers/clientes.comum.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/empresas/views/edit-empresa.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/empresas/controllers/empresas.edit.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/empresas/controllers/empresas.create.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/users/views/settings/edit-profile.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/views/list-produtos.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/cadastros/entregadores.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/cadastros/fornecedores.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/cadastros/garcoms.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/financeiro/cartoes.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/financeiro/contas.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/financeiro/formas-pagamento.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/financeiro/pontos-venda.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/cadastros/clientes.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/cadastros/caixas.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/routes/produto/setores.server.routes.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/routes/produto/unidades-medida.server.routes.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/vendor/angular-ui-select/dist/select.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/setores/views/edit-setor.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/users/controllers/authentication.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/fornecedores/views/create-fornecedor.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/fornecedores/controllers/fornecedores.create.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produtos/services/produtos.client.service.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/unidades-medida/controllers/unidades-medida.create.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/unidades-medida/controllers/unidades-medida.edit.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/unidades-medida/controllers/unidades-medida.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/setores/controllers/setores.edit.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/setores/controllers/setores.create.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/setores/controllers/setores.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/categorias/controllers/categorias.edit.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/categorias/categorias.client.module.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produto/produto.client.module.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/contas/controllers/contas.edit.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/contas/controllers/contas.create.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/core/views/partials/top-navbar.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/core/views/partials/home-auth.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/core/controllers/header.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/config/strategies/local.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/controllers/users/users.authentication.server.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/config/strategies/google.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/config/strategies/facebook.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/core/views/core.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produtos/categorias/views/list-categorias.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produtos/categorias/views/edit-categoria.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/views/financeiro.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produtos/views/produto.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produtos/categorias/views/create-categoria.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/pontos-venda/views/list-pontos-venda.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/pontos-venda/views/create-ponto-venda.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/formas-pagamento/views/list-formas-pagamento.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/pontos-venda/views/edit-ponto-venda.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/formas-pagamento/views/create-forma-pagamento.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/cartoes/views/list-cartoes.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/garcoms/views/list-garcoms.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/formas-pagamento/views/edit-forma-pagamento.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/contas/views/list-contas.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/contas/views/edit-conta.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/contas/views/create-conta.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/cartoes/views/edit-cartao.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/views/cadastros.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/garcoms/views/edit-garcom.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/garcoms/views/create-garcom.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/fornecedores/views/list-fornecedores.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/fornecedores/views/edit-fornecedor.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/entregadores/views/create-entregador.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/empresas/views/list-empresas.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/clientes/views/list-clientes.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/caixas/views/list-caixas.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/caixas/views/edit-caixa.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/entregadores/views/edit-entregador.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/entregadores/views/list-entregadores.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/cadastros/caixas/views/create-caixa.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/financeiro/config/financeiro.client.config.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produtos/config/produto.client.config.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/app/routes/produtos/categorias.server.routes.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/core/css/core.css",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/vendor/angular-ui-select/dist/select.css",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produtos/setores/controllers/setores.client.controller.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produtos/setores/views/list-setores.client.view.html",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produtos/config/produto.client.routes.js",
+		"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/produtos/unidades-medida/controllers/unidades-medida.client.controller.js"
+	],
+	"find":
+	{
+		"height": 44.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"/home/tomazini/Projetos/NodeJs/acomanda-api-ui/public/modules/garcoms",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"select some opti",
+			"plug",
+			"highlighted",
+			"chosen-choices",
+			"ui.select",
+			"ui-select",
+			"chosen",
+			"unique",
+			"ProdutoController",
+			"currTitle",
+			"clien",
+			"acomanda.sho",
+			"expire",
+			"sessions",
+			"session",
+			"sessionCollection\nsessionCollection",
+			"sessionCollection",
+			"sessi",
+			"maxAge",
+			"session",
+			"expire",
+			"cookie",
+			"<pre>",
+			".populate('empresa')",
+			".populate('empresa'",
+			"self",
+			"$observe(",
+			"searchinput",
+			".search",
+			"refresh",
+			"click",
+			"force",
+			"_.isa",
+			"->isa",
+			"http.post",
+			"_.is",
+			"param",
+			"setorId",
+			"setorByID",
+			"populate",
+			"setor",
+			"setores",
+			"setor",
+			"set",
+			"setor",
+			"empresas =",
+			"deserializeUser",
+			"login",
+			"<ol class=\"breadcrumb",
+			"produtos/",
+			"core.css",
+			"btn",
+			"alig",
+			"cente",
+			"center",
+			"cart",
+			"cartoes",
+			"cartao",
+			"cartoes",
+			"cart",
+			"unidadeMedida",
+			"cartao",
+			"Cartoes",
+			"Cartao",
+			"Conta",
+			"pont",
+			"pontoVenda",
+			"by",
+			"unidades-medida",
+			"unidadesMedidaunidades-medida",
+			"unidades-medida",
+			"cont",
+			"pon",
+			"list",
+			"listempresa",
+			"prov",
+			"listEmpresas",
+			"'app'",
+			"app.cadas",
+			"addMenuItem",
+			"fornecedor",
+			"conta",
+			"ui.rout",
+			"conta",
+			"pont",
+			"oclaz",
+			"car",
+			"then",
+			".then",
+			"submitted",
+			"Authentication",
+			"isInView",
+			"locale",
+			"locale_pt-br",
+			"acomandaApp",
+			"RouteHelpers",
+			"req",
+			"angular-input",
+			"RouteHelpersProvider",
+			"inputmask",
+			"moment",
+			"forma",
+			"form",
+			"user-follow",
+			"icon-user-follow",
+			"mon",
+			"dol",
+			"icon-",
+			"plu",
+			"chosen",
+			"extended",
+			"cart",
+			"car",
+			"cart",
+			"pont",
+			"pon",
+			"ponto",
+			"pont",
+			"ponto",
+			"clie",
+			"forn",
+			"pont",
+			"ponto",
+			"clien",
+			"forn",
+			"for",
+			"forn",
+			"clien"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			".populate('empresa', 'name')",
+			"caixas",
+			"Caixas",
+			"caixas",
+			"caixa",
+			"caixas",
+			"Caixa",
+			"Caixas",
+			"caixa",
+			"caixas",
+			"caixa",
+			"caixas",
+			"caixa",
+			"Caixa"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 335.0,
+	"status_bar_visible": true
+}

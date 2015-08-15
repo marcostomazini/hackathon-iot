@@ -1,0 +1,127 @@
+<h3>Contas
+   <small>cadastro de contas</small>
+</h3>
+
+<div ng-controller="ContasCreateController" class="container-fluid">
+   <div class="row">
+      <div class="col-md-12">
+         <form name="formValidate" ng-submit="submitForm()" novalidate="" class="form-validate form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-pattern ng-valid-url ng-invalid-validator ng-valid-minlength ng-valid-maxlength ng-valid-blacklist ng-valid-date ng-valid-date-disabled ng-valid-time">
+            <!-- START panel-->
+            <div class="panel panel-default">
+               <div class="panel-body">
+                  <fieldset class="b0">
+                     <legend>
+                        {{ 'geral.BASIC' | translate:{ appName: app.name } }}
+                     </legend>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           Descrição
+                        </label>
+                        <div class="col-sm-6">
+                           <input type="text" name="name" required ng-model="conta.descricao" class="form-control ng-dirty ng-touched ng-invalid ng-invalid-required">                           
+                        </div>
+                     </div>
+                  </fieldset>                  
+                  
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           Valor
+                        </label>
+                        <div class="col-sm-6">                        
+                           <div class="input-group">
+                              <span class="input-group-addon">R$</span>
+                              <input type="text" 
+                                 ui-number-mask="decimals"
+                                 required
+                                 ng-model="conta.valor"
+                                 class="form-control ng-dirty ng-touched ng-invalid ng-invalid-required">
+                           </div>                           
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           Data de Vencimento
+                        </label>
+                        <div class="col-sm-6">
+                           <p class="input-group">
+                              <input type="text" 
+                                 name="date" 
+                                 datepicker-popup="dd/MM/yyyy" 
+                                 required
+                                 ng-model="conta.vencimento" 
+                                 is-open="opened" 
+                                 datepicker-options="dateOptions" 
+                                 close-text="Fechar"
+                                 class="form-control ng-dirty ng-touched ng-invalid" />
+                              <span class="input-group-btn">
+                                 <button type="button" ng-click="open($event)" class="btn btn-default">
+                                    <em class="fa fa-calendar"></em>
+                                 </button>
+                              </span>
+                           </p>
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           Tipo de Pagamento
+                        </label>
+                        <div class="col-sm-6">
+                           <label class="radio-inline c-radio">
+                              <input type="radio" 
+                                 name="areceber"
+                                 required
+                                 ng-model="conta.tipo"
+                                 class="form-control ng-dirty ng-touched ng-invalid"
+                                 value="areceber">
+                              <span class="fa fa-circle"></span>A Receber</label>
+                           <label class="radio-inline c-radio">
+                              <input type="radio" 
+                                 name="apagar"
+                                 required
+                                 ng-model="conta.tipo"
+                                 class="form-control ng-dirty ng-touched ng-invalid"
+                                 value="apagar">
+                              <span class="fa fa-circle"></span>A Pagar</label>
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">RENOVAR AUTOMATICAMENTE</label>
+                        <div class="col-sm-6">
+                           
+                        </div>
+                     </div>
+                  </fieldset>
+
+               </div>               
+
+               <div class="panel-footer text-center">                  
+                  <div class="text-right mt-lg">
+                     <button type="button" class="btn btn-warning">
+                        {{ 'button.DISCARD' | translate:{ appName: app.name } }}
+                     </button>
+                     <button type="submit" class="btn btn-success">
+                        {{ 'button.SAVE' | translate:{ appName: app.name } }}
+                     </button>
+                  </div>
+               </div>
+            </div>
+            <!-- END panel-->
+         </form>
+
+      </div>
+   </div>
+   <!-- END row-->
+</div>

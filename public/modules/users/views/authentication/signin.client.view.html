@@ -1,0 +1,62 @@
+<div ng-controller="AuthenticationController" class="block-center mt-xl wd-xl">
+   <!-- START panel-->
+   <div class="panel panel-dark panel-flat">
+      <div class="panel-heading text-center">
+         <a href="#">
+            <img src="modules/core/img/brand/logo.png" alt="Image" class="block-center img-rounded" />
+         </a>
+      </div>
+      <div class="panel-body">
+
+      	<p class="text-center pv">UTILIZE SUAS CONTAS</p>
+
+      	<div class="row">
+			<div class="col-sm-12 text-center">
+				<a href="/auth/facebook">
+					<i class="fa fa-facebook-square fa-5x text-primary"></i>
+				</a>					
+				<a href="/auth/google">
+					<i class="fa fa-google-plus-square fa-5x text-danger"></i>
+				</a>
+			</div>
+		</div>
+
+		<p class="text-center pv">OU</p>
+		
+		<form role="form" ng-submit="signin()" name="loginForm" novalidate="" class="form-validate mb-lg">
+			<div class="form-group has-feedback">
+			   <input id="email" type="email" name="account_email" placeholder="Enter email" autocomplete="off" ng-model="credentials.username" required class="form-control" />
+			   <span class="fa fa-envelope form-control-feedback text-muted"></span>
+			   <span ng-show="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.required" class="text-danger">Campo obrigatório</span>
+			   <span ng-show="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.email" class="text-danger">Digite um email válido</span>
+			</div>
+			<div class="form-group has-feedback">
+			   <input id="exampleInputPassword1" type="password" name="account_password" placeholder="Password" ng-model="credentials.password" required class="form-control" />
+			   <span class="fa fa-lock form-control-feedback text-muted"></span>
+			   <span ng-show="loginForm.account_password.$dirty &amp;&amp; loginForm.account_password.$error.required" class="text-danger">Campo obrigatório</span>
+			</div>
+			<div class="clearfix">
+			   <div class="checkbox c-checkbox pull-left mt0">
+			      <label>
+			         <input type="checkbox" value="" name="account_remember" ng-model="credentials.remember" />
+			         <span class="fa fa-check"></span>Lembrar Me</label>
+			   </div>
+			   <div class="pull-right"><a ui-sref="page.recover" class="text-muted">Esqueceu sua senha?</a>
+			   </div>
+			</div>
+			<button type="submit" class="btn btn-block btn-primary mt-lg">Entrar</button>
+		</form>
+		<div ng-show="authMsg" class="alert alert-danger text-center">{{authMsg}}</div>
+			<p class="pt-lg text-center">Não tem registro?</p><a ui-sref="page.signup" class="btn btn-block btn-default">Registre Agora</a>
+		</div>
+   </div>
+   <!-- END panel-->
+   <div class="p-lg text-center">
+      <span>&copy;</span>
+      <span ng-bind="app.year"></span>
+      <span>-</span>
+      <span ng-bind="app.name"></span>
+      <br/>
+      <span ng-bind="app.description"></span>
+   </div>
+</div>

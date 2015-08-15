@@ -1,0 +1,31 @@
+<h3>Financeiro
+   <small>operações financeiras</small>
+</h3>
+
+<div ng-controller="ProdutoOpcoesController" ng-init="init()" class="container-fluid">
+   <div class="row ng-scope">
+      <div class="col-lg-3 col-md-6" ng-repeat="item in cadastros | orderBy:'order'">
+         <!-- START panel-->
+         <div class="panel" ng-class="item.color">
+            <div class="panel-heading">
+               <div class="row">
+                  <div class="col-xs-3">
+                     <em class="fa fa-5x" ng-class="item.icon"></em>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                     <div class="text-lg">{{item.count}}</div>
+                     <p class="m0">{{item.name}}</p>
+                  </div>
+               </div>
+            </div>
+            <a ng-href="{{item.link}}" class="panel-footer bg-gray-dark bt0 clearfix btn-block">
+               <span class="pull-left">Visualizar Detalhes</span>
+               <span class="pull-right">
+                  <em class="fa fa-chevron-circle-right"></em>
+               </span>
+            </a>
+            <!-- END panel-->
+         </div>
+      </div>
+   </div>
+</div>

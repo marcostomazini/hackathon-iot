@@ -1,0 +1,16 @@
+<div class="row">    
+  <input id="publish" type="button" value="Publish">
+  <ul id="messages"></ul>
+</div>   
+
+<script type="text/javascript">
+//you don't need this, just used for changing background
+  var es = new EventSource('/api/stream');
+  es.onmessage = function(e) { 
+      $('#messages').append("<li>" + e.data + "</li>") 
+  }
+
+  $("#publish").click(function () {
+    $.post("/api/stream")
+  })
+</script>

@@ -1,0 +1,150 @@
+<h3>Cadastro de Fornecedor
+   <small>cadastre sua fornecedor</small>   
+</h3>
+
+<div ng-controller="FornecedoresCreateController" class="container-fluid">
+   <div class="row">
+      <div class="col-md-12">
+         <form name="formValidate" ng-submit="submitForm()" novalidate="" class="form-validate form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-pattern ng-valid-url ng-invalid-validator ng-valid-minlength ng-valid-maxlength ng-valid-blacklist ng-valid-date ng-valid-date-disabled ng-valid-time">
+            <!-- START panel-->
+            <div class="panel panel-default">
+               <div class="panel-body">
+                  <fieldset class="b0">
+                     <legend>
+                        {{ 'geral.BASIC' | translate:{ appName: app.name } }}
+                     </legend>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           Nome do Fornecedor
+                        </label>
+                        <div class="col-sm-6">
+                           <input type="text" name="name" required ng-model="fornecedor.nome" class="form-control ng-dirty ng-touched ng-invalid ng-invalid-required">                           
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           Razão Social
+                        </label>
+                        <div class="col-sm-6">
+                           <input type="text" name="name" ng-model="fornecedor.razaoSocial" class="form-control ng-dirty ng-touched ng-invalid ng-invalid-required">                           
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           {{ 'enterprise.CNPJ' | translate:{ appName: app.name } }}
+                        </label>
+                        <div class="col-sm-6">
+                           <input type="text" 
+                              ui-br-cnpj-mask
+                              required
+                              ng-model="fornecedor.cnpj"
+                              class="form-control ng-dirty ng-touched ng-invalid">
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           IE
+                        </label>
+                        <div class="col-sm-6">
+                           <input type="text" 
+                              ng-model="fornecedor.inscricaoEstadual"
+                              class="form-control ng-dirty ng-touched ng-invalid">
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           IM
+                        </label>
+                        <div class="col-sm-6">
+                           <input type="text" 
+                              ng-model="fornecedor.inscricaoMunicipal"
+                              class="form-control ng-dirty ng-touched ng-invalid">
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           Endereço
+                        </label>
+                        <div class="col-sm-6">
+                           <div class="input-group">
+                              <ui-select 
+                                 ng-model="fornecedor.endereco" 
+                                 name="endereco" 
+                                 ng-required="true" 
+                                 ng-disabled="disabled" 
+                                 reset-search-input="false"
+                                 class="ng-dirty ng-touched ng-invalid">
+                                 <ui-select-match placeholder="Digite o endereço...">
+                                    {{$select.selected.formatted_address}}
+                                 </ui-select-match>
+                                 <ui-select-choices 
+                                    repeat="address in addresses track by $index" 
+                                    refresh="refreshAddresses($select.search)" 
+                                    refresh-delay="0">
+                                    <div ng-bind-html="address.formatted_address | highlight: $select.search"></div>
+                                 </ui-select-choices>
+                              </ui-select>
+                              <span class="input-group-btn">
+                                 <button type="button" ng-click="fornecedor.endereco = undefined" class="btn btn-default">
+                                    <small>
+                                       <em class="fa fa-times text-muted"></em>
+                                    </small>
+                                 </button>
+                              </span>
+                           </div>
+                        </div>
+                     </div>
+                  </fieldset>
+
+                  <fieldset>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                           Telefone
+                        </label>
+                        <div class="col-sm-6">
+                           <input type="text" 
+                              ui-br-phone-number
+                              required
+                              ng-model="fornecedor.telefone"
+                              class="form-control ng-dirty ng-touched">
+                        </div>
+                     </div>
+                  </fieldset>
+
+                </div>               
+
+                <div class="panel-footer text-center">                  
+                  <div class="text-right mt-lg">
+                     <button type="button" class="btn btn-warning">
+                        {{ 'button.DISCARD' | translate:{ appName: app.name } }}
+                     </button>
+                     <button type="submit" class="btn btn-success">
+                        {{ 'button.SAVE' | translate:{ appName: app.name } }}
+                     </button>
+                  </div>
+                </div>
+            <!-- END panel-->
+         </form>
+
+      </div>
+   </div>
+   <!-- END row-->
+</div>

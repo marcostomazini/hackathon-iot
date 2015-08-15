@@ -1,0 +1,25 @@
+<h3 data-ng-show="authentication.user">
+   <!-- START Language list-->
+   <!-- <div class="pull-right">
+      <div dropdown="" is-open="language.listIsOpen" class="btn-group">
+         <button type="button" dropdown-toggle="" class="btn btn-default">{{language.selected}}
+            <span class="caret"></span>
+         </button>
+         <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+            <li ng-repeat="(localeId, langName) in language.available"><a ng-click="language.set(localeId, $event)">{{langName}}</a>
+            </li>
+         </ul>
+      </div>
+   </div> -->
+   <small>{{ 'dashboard.WELCOME' | translate:{ appName: app.name } }} <b class="text-uppercase">{{ authentication.user.name }}</b> !!! </small>
+</h3>
+
+<section>
+
+  <div ng-include="'/modules/core/views/partials/home-auth.html'"
+      data-ng-show="authentication.user"></div>
+
+  <div ng-include="'/modules/core/views/partials/home-no-auth.html'"
+      data-ng-show="!authentication.user"></div>
+
+</section>
