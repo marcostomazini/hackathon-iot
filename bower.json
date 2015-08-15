@@ -1,0 +1,29 @@
+{
+  "name": "app",
+  "version": "0.0.2",
+  "dependencies": {
+    "angular": "*",
+    "angular-route": "*",
+    "angular-local-storage" : "*",
+    "angular-animate": "*",
+    "noty": "*",
+    "jquery": "*",
+    "jquery-ui": "*",
+    "bootstrap": "*",
+    "cryptojslib" : "*",
+    "requirejs" : "*",
+    "angular-datatables": "*",
+    "angular-loading-bar": "*",
+    "bootstrap-fileinput": "*",
+    "underscore": "*",
+    "jquery-colorbox": "*"
+  },
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

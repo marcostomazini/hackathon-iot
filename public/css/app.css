@@ -1,0 +1,16 @@
+/* app css stylesheet */
+
+.no-bottom-margin {
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+
+.minilogo{     
+	height:10%;
+	width:10%;
+}
+
+#loading-bar .bar {
+	background: #83C0D7;
+	height: 4px;
+}

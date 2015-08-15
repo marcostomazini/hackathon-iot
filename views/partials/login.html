@@ -1,0 +1,138 @@
+<div class="row">
+	<div class="col-sm-10 col-sm-offset-1">
+		<div class="center">
+			<h1 class="blue" id="id-company-text">Guarda Municipal de Sarandi</h1>
+			<h4>
+				<span class="red">&copy; Arquiteta</span>
+				<span class="white" id="id-text2">Web</span>
+			</h4>
+		</div>
+		<div class="login-container">
+			<div class="space-6"></div>
+
+			<div class="position-relative">
+				<div id="login-box" class="login-box visible widget-box no-border">
+					<div class="widget-body">
+						<div class="widget-main">
+							<h4 class="header blue lighter bigger">
+								<i class="ace-icon fa fa-coffee green"></i>
+								Insira suas credenciais
+							</h4>
+
+							<div class="space-6"></div>
+
+							<form ng-submit="submit()" role="form">
+								<fieldset>
+									<label class="block clearfix">
+										<span class="block input-icon input-icon-right">
+											<input name="username" type="text" class="form-control" ng-model="username" placeholder="Digite seu usuario..." required>
+											<i class="ace-icon fa fa-user"></i>
+										</span>
+									</label>
+
+									<label class="block clearfix">
+										<span class="block input-icon input-icon-right">
+											<input name="password" type="password" class="form-control" ng-model="password" placeholder="Digite sua senha..." required>
+											<i class="ace-icon fa fa-lock"></i>
+										</span>
+									</label>
+
+									<div class="space"></div>
+
+									<div class="clearfix">
+										<label class="inline">
+											<input type="checkbox" class="ace" />
+											<span class="lbl"> Lembrar senha</span>
+										</label>
+
+			
+										<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+											<i class="ace-icon fa fa-key"></i>
+											<span class="bigger-110">Entrar</span>
+										</button>
+									</div>
+
+									<div class="space-4"></div>
+								</fieldset>
+							</form>
+							
+						</div><!-- /.widget-main -->
+
+						<div class="toolbar clearfix">
+							<div>
+								<a href="#" data-target="#forgot-box" class="forgot-password-link">
+									<i class="ace-icon fa fa-arrow-left"></i>
+									Esqueci minha senha
+								</a>
+							</div>
+
+						</div>
+					</div><!-- /.widget-body -->
+				</div><!-- /.login-box -->
+
+				<div id="forgot-box" class="forgot-box widget-box no-border">
+					<div class="widget-body">
+						<div class="widget-main">
+							<h4 class="header red lighter bigger">
+								<i class="ace-icon fa fa-key"></i>
+								Recuperação de Senha
+							</h4>
+
+							<div class="space-6"></div>
+							<p>
+								Digite seu email e siga as instruções recebidas
+							</p>
+
+							<form>
+								<fieldset>
+									<label class="block clearfix">
+										<span class="block input-icon input-icon-right">
+											<input type="email" class="form-control" placeholder="Email" />
+											<i class="ace-icon fa fa-envelope"></i>
+										</span>
+									</label>
+
+									<div class="clearfix">
+										<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+											<i class="ace-icon fa fa-lightbulb-o"></i>
+											<span class="bigger-110">Envie!</span>
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div><!-- /.widget-main -->
+
+						<div class="toolbar center">
+							<a href="#" data-target="#login-box" class="back-to-login-link">
+								Voltar para login
+								<i class="ace-icon fa fa-arrow-right"></i>
+							</a>
+						</div>
+					</div><!-- /.widget-body -->
+				</div><!-- /.forgot-box -->
+
+			</div><!-- /.position-relative -->
+			
+		</div>
+	</div><!-- /.col -->
+</div><!-- /.row -->
+
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+jQuery(function($) {
+ $(document).on('click', '.toolbar a[data-target]', function(e) {
+	e.preventDefault();
+	var target = $(this).data('target');
+	$('.widget-box.visible').removeClass('visible');//hide others
+	$(target).addClass('visible');//show target
+ });
+});
+
+//you don't need this, just used for changing background
+jQuery(function($) {
+	
+	$('#id-text2').attr('class', 'grey');
+	$('#id-company-text').attr('class', 'blue');	 
+ 
+});
+</script>
