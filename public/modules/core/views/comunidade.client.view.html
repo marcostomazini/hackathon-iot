@@ -1,78 +1,165 @@
 <style type="text/css">
-    #panelChart3{
+    #panelChart3 {
         width: 700px;
-        height:580px;
-        padding:30px;
+        height: 580px;
+        padding: 30px;
     }
-    #panelChart3 .panel-body{
-        background-image:url("/themes/mapa.PNG");
-        width: 100%;
-        height:550px;
-    }
-.contador {
-    background-color: cornflowerblue;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 9999px;
-    border: white 2px solid;
-    width: 60px;
-    text-align: center;
-    position: absolute;
-}
 
-.c7{
-    top: 174px;
-    left: 143px;
-}
-.c6{
-    top: 400px;
-    left: 160px;
-}
-.c5{
-    top: 236px;
-    left: 457px;
-}
-.c4{
-    top: 370px;
-    left: 457px;
-}
-.c3{
-    top: 363px;
-    left: 294px;
-}
-.c2{
-      top: 230px;
-    left: 449px;
-}
-.c1{
-    top: 249px;
-    left: 305px;
-}
+        #panelChart3 .panel-body {
+            background-image: url("/themes/mapa.PNG");
+            width: 100%;
+            height: 550px;
+        }
+
+    .contador {
+        background-color: cornflowerblue;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 9999px;
+        border: white 2px solid;
+        width: 60px;
+        text-align: center;
+        position: absolute;
+    }
+
+    .c7 {
+        top: 174px;
+        left: 143px;
+    }
+
+    .c6 {
+        top: 400px;
+        left: 160px;
+    }
+
+    .c5 {
+        top: 236px;
+        left: 457px;
+    }
+
+    .c4 {
+        top: 370px;
+        left: 457px;
+    }
+
+    .c3 {
+        top: 363px;
+        left: 294px;
+    }
+
+    .c2 {
+        top: 230px;
+        left: 449px;
+    }
+
+    .c8 {
+        top: 485px;
+        left: 294px;
+    }
+
+    .c1 {
+        top: 249px;
+        left: 305px;
+    }
 </style>
 <section>
-  <div class="row" ng-controller="ComunidadeController" >    
-  
-  <div class="col-lg-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-9 col-md-9 col-sm-9">
-      <!-- START bar chart-->
-      <div id="panelChart3" class="panel">
-         <div class="panel-heading">
-            <div class="panel-title">Consumo na Comunidade</div>
-         </div>
-         <div collapse="panelChart3" class="panel-wrapper">
-            <div class="panel-body">
-                <div class="contador c1">3250</div>
-                <div class="contador c3">1232</div>
-                <div class="contador c4">0756</div>
-                <div class="contador c5">2451</div>
-                <div class="contador c6">1545</div>
-                <div class="contador c7">1729</div>
+    <!-- START widgets box-->
+    <div class="row">
+        <div class="col-lg-3 col-sm-6">
+            <!-- START widget-->
+            <div class="panel widget bg-primary">
+                <div class="row row-table">
+                    <div class="col-xs-4 text-center bg-primary-dark pv-lg">
+                        <em class="icon-globe fa-3x"></em>
+                    </div>
+                    <div class="col-xs-8 pv-lg">
+                        <div class="h2 mt0">
+                            11.420
+                            <small>lts/mês</small>
+                        </div>
+                        <div class="text-uppercase">consumo médio familiar</div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <!-- END bar chart-->
-   </div>
-</div>   
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <!-- START widget-->
+            <div class="panel widget bg-purple">
+                <div class="row row-table">
+                    <div class="col-xs-4 text-center bg-purple-dark pv-lg">
+                        <em class="icon-globe fa-3x"></em>
+                    </div>
+                    <div class="col-xs-8 pv-lg">
+                        <div class="h2 mt0">
+                            121.60
+                            <small>lts/dia</small>
+                        </div>
+                        <div class="text-uppercase">consumo médio familiar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <!-- START widget-->
+            <div class="panel widget bg-green">
+                <div class="row row-table">
+                    <div class="col-xs-4 text-center bg-green-dark pv-lg">
+                        <em class="icon-dislike fa-3x"></em>
+                    </div>
+                    <div class="col-xs-8 pv-lg">
+                        <div class="h2 mt0">
+                            2.622
+                            <small>lts/mês</small>
+                        </div>
+                        <div class="text-uppercase">desperdício médio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <!-- START date widget-->
+            <div class="panel widget">
+                <div class="row row-table">
+                    <div class="col-xs-4 text-center bg-green pv-lg">
+                        <!-- See formats: https://docs.angularjs.org/api/ng/filter/date-->
+                        <now format="MMMM" class="text-sm"></now>
+                        <br />
+                        <now format="d" class="h2 mt0"></now>
+                    </div>
+                    <div class="col-xs-8 pv-lg">
+                        <now format="EEEE" class="text-uppercase"></now>
+                        <br />
+                        <now format="h:mm" class="h2 mt0"></now>
+                        <now format="a" class="text-muted text-sm"></now>
+                    </div>
+                </div>
+            </div>
+            <!-- END date widget    -->
+        </div>
+    </div>
+    <!-- END widgets box-->
+    <div class="row" ng-controller="ComunidadeController">
 
-
+        <div class="col-lg-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-9 col-md-9 col-sm-9">
+            <!-- START bar chart-->
+            <div id="panelChart3" class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">Consumo na Comunidade</div>
+                </div>
+                <div collapse="panelChart3" class="panel-wrapper">
+                    <div class="panel-body">
+                        <div class="contador c1">3250</div>
+                        <div class="contador c3">1232</div>
+                        <div class="contador c4">0756</div>
+                        <div class="contador c5">2451</div>
+                        <div class="contador c6">1545</div>
+                        <div class="contador c7">1729</div>
+                        <div class="contador c8">970</div>
+                    </div>
+                </div>
+            </div>
+            <!-- END bar chart-->
+        </div>
+    </div>
 </section>

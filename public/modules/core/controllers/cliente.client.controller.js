@@ -9,7 +9,7 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
                     var pctg = Math.floor(litros / 2000 * 100);
                     if (pctg > 100) pctg = 100;
                     $('#water').text(litros.toString() + " litros");
-                    if (Math.abs(data[0].valor - data[10].valor) > 10)
+                    if (Math.abs(data[0].valor - data[10].valor) > 20)
                         $('#water').toggleClass("animate").css({ height: pctg + "%" });                
             }
             catch (ex) { }

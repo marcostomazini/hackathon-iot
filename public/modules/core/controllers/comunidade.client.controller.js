@@ -3,14 +3,31 @@ angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData'
   
   $interval(function () {
       try {
-          for (var i = 2; i <= 7; i++) {
+          for (var i = 2; i <= 8; i++) {
               var v = parseInt($('.c' + i).text());
-              v = v + Math.floor(v + Math.random() * 5);
+              v = Math.floor(v + Math.random() * 3);
               $('.c' + i).text(v);
           }
       }
       catch (ex) { }
-  }, 100);
+  }, 400);
+
+  $interval(function () {
+      try {
+          $.getJSON("/api/sensor/caixa", function (data) {
+              var v = parseInt($(".c1").text());
+              var d1 = parseInt(data[1].valor);
+              var d0 = parseInt(data[0].valor);
+              console.log(d1 + " - " + d0 + " = " + (d1 - d0));
+              console.log(v);
+              var gasto = d1 - d0;
+              if (gasto > 0) {
+                  $(".c1").text(v + gasto);
+              }
+          });
+      }
+      catch (ex) { }
+  }, 2000);
 
   // BAR
   // ----------------------------------- 
