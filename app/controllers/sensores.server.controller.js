@@ -92,6 +92,32 @@ exports.sensorByID = function(req, res, next, id) {
                     res.json(resultado);
                 break;
 
+                case 'caixa-historico': // caixa 
+                    var resultadoCaixa = _.take(_.filter(objetos, { 'sensor': 'C' }), 30);
+                    var resultadoGiro = _.take(_.filter(objetos, { 'sensor': 'G' }), 30);
+
+                    var historicos = [{
+                        label: 'Registro',
+                        color: '#768294',
+                        data: []
+                    },{
+                        label: 'Caixa',
+                        color: '#1f92fe',
+                        data: []
+                    }];
+
+                    _.forEach(resultadoCaixa, function(item, key) { 
+                        historicos[1].data.push([item.data,parseInt(item.valor)]);
+                        //historicos[0].data.push(item.data);
+                    });
+
+                    _.forEach(resultadoGiro, function(item, key) {   
+                        historicos[0].data.push([item.data,parseInt(item.valor)]);                        
+                    });
+
+                    res.json(historicos);
+                break;
+
                 case 'solo': // umidade do solo
                     var resultado = _.take(_.filter(objetos, { 'sensor': 'U' }), 30);
                     res.json(resultado);
