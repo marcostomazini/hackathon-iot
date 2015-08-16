@@ -4,15 +4,13 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
     $interval(function () {
         $.getJSON("/api/sensor/caixa", function (data) {
             try {
-                $.getJSON("/api/sensor/caixa", function (data2) {
                     var dado = data[0];
                     var litros = parseInt(dado.valor);
                     var pctg = Math.floor(litros / 2000 * 100);
                     if (pctg > 100) pctg = 100;
                     $('#water').text(litros.toString() + " litros");
                     if (Math.abs(data[0].valor - data[10].valor) > 10)
-                        $('#water').toggleClass("animate").css({ height: pctg + "%" });
-                });
+                        $('#water').toggleClass("animate").css({ height: pctg + "%" });                
             }
             catch (ex) { }
         });
