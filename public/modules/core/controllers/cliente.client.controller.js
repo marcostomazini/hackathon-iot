@@ -15,8 +15,7 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
             catch (ex) { }
         });
 
-
-        $('#historicoConsumo').setData().setupGrid();
+        //$('#historicoConsumo').setData().setupGrid();
     }, 2000);
 
     // BAR

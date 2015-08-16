@@ -1,6 +1,17 @@
-angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData', '$timeout', function($scope, ChartData, $timeout) {
+angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData', '$timeout', '$interval', function ($scope, ChartData, $timeout,$interval) {
   'use strict';
   
+  $interval(function () {
+      try {
+          for (var i = 2; i <= 7; i++) {
+              var v = parseInt($('.c' + i).text());
+              v = v + Math.floor(v + Math.random() * 5);
+              $('.c' + i).text(v);
+          }
+      }
+      catch (ex) { }
+  }, 100);
+
   // BAR
   // ----------------------------------- 
   $scope.barData = ChartData.load('server/chart/bar.json');
