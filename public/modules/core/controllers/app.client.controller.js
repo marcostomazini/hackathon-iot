@@ -11,6 +11,19 @@ angular.module('core').controller('AppController',
     $timeout, $location, toggle, colors, browser, cfpLoadingBar, Authentication, Empresas) {
     "use strict";
 
+    // handles the callback from the received event
+    var handleCallback = function (msg) {
+        $scope.$apply(function () {
+          //$scope.msg = JSON.parse(msg.data)
+          $('#messages').append("<li>" + msg.data + "</li>") 
+
+          // C:0|U:1020|A:1021|G:0
+        });
+    }
+
+    var source = new EventSource('/api/stream');
+    source.addEventListener('message', handleCallback, false);
+
     // This provides Authentication context.
     $scope.authentication = Authentication;
     $scope.authentication.empresas = Empresas.query();    

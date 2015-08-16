@@ -36,14 +36,14 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
       url: '/home',
       templateUrl: 'modules/core/views/cliente.client.view.html',
       controller: 'ClienteController',
-      resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
+      resolve: helper.resolveFor('flot-chart','flot-chart-plugins', 'sparklines', 'classyloader')
     })
 
     .state('app.comunidade', {
       url: '/comunidade',
       templateUrl: 'modules/core/views/comunidade.client.view.html',
       controller: 'ComunidadeController',
-      resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
+      resolve: helper.resolveFor('flot-chart','flot-chart-plugins', 'sparklines', 'classyloader')
     })
 
     .state('app.prefeitura', {

@@ -6,7 +6,7 @@ module.exports = {
 		description: 'Gerenciamento Online para Bares e Restaurantes',
 		keywords: 'Gerencimento, Bares, Restaurantes, Pizzaria'
 	},
-	port: process.env.PORT || 3001,
+	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
 	sessionSecret: 'ACOMANDA-KEY',
 	sessionCollection: 'sessoes',
