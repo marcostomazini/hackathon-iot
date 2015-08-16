@@ -1,31 +1,8 @@
 <div ng-controller="PrefeituraController">
 
 <div class="row">
-   <!-- START dashboard main content-->
-   <div class="col-lg-9">
-      <!-- START chart-->
-      <div class="row">
-         <div class="col-lg-12">
-            <!-- START widget-->
-            <div id="panelChart9" class="panel panel-default">
-               <div class="panel-heading">
-                  <paneltool tool-collapse="tool-collapse" tool-refresh="traditional"></paneltool>
-                  <div class="panel-title">Inbound visitor statistics</div>
-               </div>
-               <div collapse="panelChart9" class="panel-wrapper">
-                  <div class="panel-body">
-                     <flot dataset="splineData" options="splineOptions" height="250px"></flot>
-                  </div>
-               </div>
-            </div>
-            <!-- END widget-->
-         </div>
-      </div>
-      <!-- END chart-->      
-   </div>
-   <!-- END dashboard main content-->
    <!-- START dashboard sidebar-->
-   <aside class="col-lg-3">
+   <div class="col-lg-3 col-md-3">
       <!-- START loader widget-->
       <div class="panel panel-default">
          <div class="panel-body">
@@ -33,7 +10,7 @@
                <em class="fa fa-arrow-right"></em>
             </a>
             <div class="text-info">Probabilidade de chuva</div>
-            <canvas classyloader="" data-percentage="70" data-speed="20" data-font-size="40px" data-diameter="70" data-line-color="{{colorByName('info')}}" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"
+            <canvas classyloader="" data-percentage="72" data-speed="20" data-font-size="40px" data-diameter="70" data-line-color="{{colorByName('info')}}" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"
             data-rounded-line="true" class="center-block"></canvas>
             <div sparkline="" data-bar-color="{{colorByName('info')}}" data-height="30" data-bar-width="5" data-bar-spacing="2" values="5,4,8,7,8,5,4,6,5,5,9,4,6,3,4,7,5,4,7" class="text-center"></div>
          </div>
@@ -46,7 +23,73 @@
          </div>
       </div>
       <!-- END loader widget-->
-   </aside>
+   </div>
+    <div class="col-lg-3  col-md-3">
+        <!-- START loader widget-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a href="#" class="text-muted pull-right">
+                    <em class="fa fa-arrow-right"></em>
+                </a>
+                <div class="text-info">Probabilidade de chuva</div>
+                <canvas classyloader="" data-percentage="65" data-speed="20" data-font-size="40px" data-diameter="70" data-line-color="{{colorByName('info')}}" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"
+                        data-rounded-line="true" class="center-block"></canvas>
+                <div sparkline="" data-bar-color="{{colorByName('info')}}" data-height="30" data-bar-width="5" data-bar-spacing="2" values="5,4,8,7,8,5,4,6,5,5,9,4,6,3,4,7,5,4,7" class="text-center"></div>
+            </div>
+            <div class="panel-footer">
+                <p class="text-muted">
+                    <em class="fa fa-upload fa-fw"></em>
+                    <span>Nesse mês</span>
+                    <span class="text-dark"> rio ivaí</span>
+                </p>
+            </div>
+        </div>
+        <!-- END loader widget-->
+    </div>
+    <div class="col-lg-3  col-md-3">
+        <!-- START loader widget-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a href="#" class="text-muted pull-right">
+                    <em class="fa fa-arrow-right"></em>
+                </a>
+                <div class="text-info">Probabilidade de chuva</div>
+                <canvas classyloader="" data-percentage="32" data-speed="20" data-font-size="40px" data-diameter="70" data-line-color="{{colorByName('warning')}}" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"
+                        data-rounded-line="true" class="center-block"></canvas>
+                <div sparkline="" data-bar-color="{{colorByName('warning')}}" data-height="30" data-bar-width="5" data-bar-spacing="2" values="5,4,8,7,8,5,4,6,5,5,9,4,6,3,4,7,5,4,7" class="text-center"></div>
+            </div>
+            <div class="panel-footer">
+                <p class="text-muted">
+                    <em class="fa fa-upload fa-fw"></em>
+                    <span>Nesse mês</span>
+                    <span class="text-dark"> rio tibagi </span>
+                </p>
+            </div>
+        </div>
+        <!-- END loader widget-->
+    </div>
+    <div class="col-lg-3  col-md-3">
+        <!-- START loader widget-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a href="#" class="text-muted pull-right">
+                    <em class="fa fa-arrow-right"></em>
+                </a>
+                <div class="text-info">Probabilidade de chuva</div>
+                <canvas classyloader="" data-percentage="15" data-speed="20" data-font-size="40px" data-diameter="70" data-line-color="{{colorByName('danger')}}" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"
+                        data-rounded-line="true" class="center-block"></canvas>
+                <div sparkline="" data-bar-color="{{colorByName('danger')}}" data-height="30" data-bar-width="5" data-bar-spacing="2" values="5,4,8,7,8,5,4,6,5,5,9,4,6,3,4,7,5,4,7" class="text-center"></div>
+            </div>
+            <div class="panel-footer">
+                <p class="text-muted">
+                    <em class="fa fa-upload fa-fw"></em>
+                    <span>Nesse mês</span>
+                    <span class="text-dark"> rio paranapanema</span>
+                </p>
+            </div>
+        </div>
+        <!-- END loader widget-->
+    </div>
    <!-- END dashboard sidebar-->
 </div>
 
