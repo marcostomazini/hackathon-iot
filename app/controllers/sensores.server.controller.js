@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Sensor = mongoose.model('Sensor'),
 	_ = require('lodash'),
+    moment = require('moment'),
 	mqtt = require('mqtt'), url = require('url');    
 	
 	// Parse 
@@ -84,6 +85,7 @@ exports.sensorByID = function(req, res, next, id) {
 
                     _.forEach(resultado, function(item, key) {   
                         item.valor = parseInt(item.valor) * 10;
+                        item.data = moment(item.data).valueOf();
                     });
 
                     res.json(resultado);
