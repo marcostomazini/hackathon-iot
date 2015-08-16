@@ -1,5 +1,25 @@
-angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '$timeout', function ($scope, ChartData, $timeout) {
+angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '$timeout', '$interval', function ($scope, ChartData, $timeout, $interval) {
     'use strict';
+
+    $interval(function () {
+        $.getJSON("/api/sensor/caixa", function (data) {
+            try {
+                $.getJSON("/api/sensor/caixa", function (data2) {
+                    var dado = data[0];
+                    var litros = parseInt(dado.valor);
+                    var pctg = Math.floor(litros / 2000 * 100);
+                    if (pctg > 100) pctg = 100;
+                    $('#water').text(litros.toString() + " litros");
+                    if (Math.abs(data[0].valor - data[10].valor) > 10)
+                        $('#water').toggleClass("animate").css({ height: pctg + "%" });
+                });
+            }
+            catch (ex) { }
+        });
+
+
+        $('#historicoConsumo').setData().setupGrid();
+    }, 2000);
 
     // BAR
     // ----------------------------------- 
@@ -86,7 +106,7 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
         tooltip: true,
         xaxis: {
             tickColor: '#fcfcfc',
-            mode: 'categories'
+            mode: 'categories',
         },
         yaxis: {
             min: 0,
@@ -103,6 +123,9 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
     // ----------------------------------- 
     $//scope.splineData = ChartData.load('server/chart/spline.json');
     $scope.caixaDaguaHistoricoOptions = {
+        legend: {
+            position: 'nw'
+        },
         series: {
             lines: {
                 show: false
@@ -127,14 +150,16 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
         tooltip: true,
         xaxis: {
             tickColor: '#fcfcfc',
-            mode: 'categories'
+            mode: 'time',
+            minTickSize: [2, "second"],
         },
         yaxis: {
             min: 0,
+            alignTicksWithAxis: 1,
             tickColor: '#eee',
             position: ($scope.app.layout.isRTL ? 'right' : 'left')
         },
-        shadowSize: 0
+        shadowSize: 10
     };
 
     // AREA
@@ -163,7 +188,8 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
         },
         xaxis: {
             tickColor: '#fcfcfc',
-            mode: 'categories'
+            mode: 'categories',
+            alignTicksWithAxis: 10
         },
         yaxis: {
             min: 0,

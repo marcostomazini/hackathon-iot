@@ -6,38 +6,101 @@
         border-radius: 8px;
     }
 
-    .panel-heading{
+    .panel-heading {
         font-weight: bold;
-        color:black;
+        color: black;
     }
+
+    #container {
+    background: rgba( 0, 0, 0, 0.10);
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+    border-left: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    border-top: 1px solid #ccc;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+}
+#glass {
+    background: rgba( 255, 255, 255, 0.50);
+    border: 1px solid #bbb;
+    border-top: 1px solid #eee;  
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+#water {
+    background-image: url("themes/waves.png");   
+    background-position: top right;
+    background-size: 300px 400px;
+    position: absolute;
+    bottom: 0;
+    padding-bottom:20px;
+    width: 100%;
+    height: 100px;
+    -webkit-transition: all 3s ease-out;
+    -moz-transition: all 3s ease-out;
+    -o-transition: all 3s ease-out;
+    transition: all 3s ease-out;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    
+    font-weight: bold;
+    font-size: 50px;
+    text-align:center;
+}
+#water.animate{
+    background-size: 250px 400px;
+    background-position: top left;
+    -webkit-transition: all 3s ease-out;
+    -moz-transition: all 3s ease-out;
+    -o-transition: all 3s ease-out;
+    transition: all 3s ease-out;
+}
+
+#glass:hover #water {
+    height: 350px;
+   
+}
+
 </style>
 
 <div ng-controller="ClienteController">
     <div class="row">
-        <input id="publish" type="button" value="Publish">
-        <ul id="messages"></ul>
-        <div class="col-lg-12">
-            <!-- START bar chart-->
-            <div id="panelChart3" class="panel panel-default col-sm-offset-3 col-sm-offset-3 col-ls-offset-3 col-sm-6 col-md-6 col-lg-6">
-                <div class="panel-heading">
-                    <div class="panel-title">Sua Caixa D'agua</div>
-                </div>
-                <div collapse="panelChart3" class="panel-wrapper">
-                    <div class="panel-body caixa-dagua water">
-                        <flot src="'server/chart/volumeDaCaixa.json'" options="barStackedOptions" height="250px"></flot>
+        <div id="" class="panel panel-default col-sm-offset-3 col-md-offset-2 col-lg-offset-2
+                 col-sm-8 col-md-8 col-lg-8">
+            <div class="panel-heading">
+                <div class="panel-title">Sua Caixa D'agua</div>
+            </div>
+            <div collapse="panelChart3" class="panel-wrapper">
+                <div id="container">
+                    <div id="glass">
+                        <div id="water" class="center"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div id="panelChart9" class="panel col-sm-offset-3 col-sm-offset-3 col-ls-offset-3 col-sm-6 col-md-6 col-lg-6">
-                <div class="panel-heading">
-                    <div class="panel-title">Website Performance</div>
-                </div>
-                <div collapse="panelChart9" class="panel-wrapper">
-                    <div class="panel-body">
-                        <flot src="'server/chart/caixaDaguaHistorico.json'" options="caixaDaguaHistoricoOptions" height="300px"></flot>
-                    </div>
+        <!-- START bar chart-->
+        
+        <div id="" class="panel panel-default col-sm-offset-3 col-md-offset-2 col-lg-offset-2
+                 col-sm-8 col-md-8 col-lg-8">
+            <div class="panel-heading">
+                <div class="panel-title">Historico de Consumo</div>
+            </div>
+            <div collapse="panelChart9" class="panel-wrapper">
+                <div class="panel-body">
+                    <flot options="caixaDaguaHistoricoOptions" height="300px"></flot>
                 </div>
             </div>
         </div>
@@ -45,108 +108,7 @@
     </div>
 </div>
 <!-- START widgets box-->
-<div class="row">
-    <div class="col-lg-3 col-sm-6">
-        <!-- START widget-->
-        <div class="panel widget bg-primary">
-            <div class="row row-table">
-                <div class="col-xs-4 text-center bg-primary-dark pv-lg">
-                    <em class="icon-cloud-upload fa-3x"></em>
-                </div>
-                <div class="col-xs-8 pv-lg">
-                    <div class="h2 mt0">1700</div>
-                    <div class="text-uppercase">Uploads</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-sm-6">
-        <!-- START widget-->
-        <div class="panel widget bg-purple">
-            <div class="row row-table">
-                <div class="col-xs-4 text-center bg-purple-dark pv-lg">
-                    <em class="icon-globe fa-3x"></em>
-                </div>
-                <div class="col-xs-8 pv-lg">
-                    <div class="h2 mt0">
-                        700
-                        <small>GB</small>
-                    </div>
-                    <div class="text-uppercase">Quota</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <!-- START widget-->
-        <div class="panel widget bg-green">
-            <div class="row row-table">
-                <div class="col-xs-4 text-center bg-green-dark pv-lg">
-                    <em class="icon-bubbles fa-3x"></em>
-                </div>
-                <div class="col-xs-8 pv-lg">
-                    <div class="h2 mt0">500</div>
-                    <div class="text-uppercase">Reviews</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <!-- START date widget-->
-        <div class="panel widget">
-            <div class="row row-table">
-                <div class="col-xs-4 text-center bg-green pv-lg">
-                    <!-- See formats: https://docs.angularjs.org/api/ng/filter/date-->
-                    <now format="MMMM" class="text-sm"></now>
-                    <br />
-                    <now format="d" class="h2 mt0"></now>
-                </div>
-                <div class="col-xs-8 pv-lg">
-                    <now format="EEEE" class="text-uppercase"></now>
-                    <br />
-                    <now format="h:mm" class="h2 mt0"></now>
-                    <now format="a" class="text-muted text-sm"></now>
-                </div>
-            </div>
-        </div>
-        <!-- END date widget    -->
-    </div>
-</div>
 <!-- END widgets box-->
-<div class="row">
-    <!-- START dashboard main content-->
-    <!-- END dashboard main content-->
-    <!-- START dashboard sidebar-->
-    <aside class="col-lg-3">
-        <!-- START loader widget-->
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <a href="#" class="text-muted pull-right">
-                    <em class="fa fa-arrow-right"></em>
-                </a>
-                <div class="text-info">Average Monthly Uploads</div>
-                <canvas classyloader="" data-percentage="70" data-speed="20" data-font-size="40px" data-diameter="70" data-line-color="{{colorByName('info')}}" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"
-                        data-rounded-line="true" class="center-block"></canvas>
-                <div sparkline="" data-bar-color="{{colorByName('info')}}" data-height="30" data-bar-width="5" data-bar-spacing="2" values="5,4,8,7,8,5,4,6,5,5,9,4,6,3,4,7,5,4,7" class="text-center"></div>
-            </div>
-            <div class="panel-footer">
-                <p class="text-muted">
-                    <em class="fa fa-upload fa-fw"></em>
-                    <span>This Month</span>
-                    <span class="text-dark">1000 Gb</span>
-                </p>
-            </div>
-        </div>
-        <!-- END loader widget-->
-    </aside>
-    <!-- END dashboard sidebar-->
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <!-- START widget-->
-        <!-- END widget-->
-    </div>
-</div>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel widget">
@@ -215,6 +177,6 @@
         $("#publish").click(function () {
             $.post("/api/stream")
         })
-
+        
     });
 </script>
