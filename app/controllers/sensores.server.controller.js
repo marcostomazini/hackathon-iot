@@ -84,7 +84,9 @@ exports.sensorByID = function(req, res, next, id) {
                     var resultado = _.take(_.filter(objetos, { 'sensor': 'C' }), 30);
 
                     _.forEach(resultado, function(item, key) {   
-                        item.valor = parseInt(item.valor) * 10;
+                        var valor = (20 - parseInt(item.valor)) * 100;
+                        if (valor < 0) valor = 0;
+                        item.valor = valor;
                         item.data = moment(item.data).valueOf();
                     });
 
