@@ -16,10 +16,7 @@ angular.module('core').controller('AppController',
         $scope.$apply(function () {
           //$scope.msg = JSON.parse(msg.data)
           $('#messages').append("<li>" + msg.data + "</li>") 
-
-
         // Create new cliente object
-debugger
         var sensor = undefined;
           sensor = new Sensores({tipo: 'todos', valor: msg.data});
           // Redirect after save
