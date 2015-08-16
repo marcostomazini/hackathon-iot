@@ -2,7 +2,7 @@
 
 module.exports = {
 	//db: 'mongodb://arquitetaweb:arqw3b@ds043082.mongolab.com:43082/heroku_app37384508',
-	db: 'mongodb://localhost/iot',
+	db: 'mongodb://192.168.10.103/iot',
 	app: {
 		title: 'Sensorizacao - Development Environment'
 	},

@@ -16,7 +16,7 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
       },
       grid: {
           borderColor: '#eee',
-          borderWidth: 1,
+          borderWidth: 0,
           hoverable: true,
           backgroundColor: '#fcfcfc'
       },
@@ -43,33 +43,23 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
           stack: true,
           bars: {
               align: 'center',
-              lineWidth: 0,
+              lineWidth: 3,
               show: true,
-              barWidth: 0.6,
+              barWidth: 1,
               fill: 0.9
           }
       },
-      grid: {
-          borderColor: '#eee',
-          borderWidth: 1,
-          hoverable: true,
-          backgroundColor: '#fcfcfc'
-      },
-      tooltip: true,
-      tooltipOpts: {
-          content: function (label, x, y) { return x + ' : ' + y; }
-      },
-      xaxis: {
-          tickColor: '#fcfcfc',
-          mode: 'categories'
-      },
       yaxis: {
           min: 0,
-          max: 200, // optional: use it for a clear represetation
-          position: ($scope.app.layout.isRTL ? 'right' : 'left'),
-          tickColor: '#eee'
+          max:100
       },
-      shadowSize: 0
+      grid: {
+          show:false,
+          borderColor: 'red',
+          borderWidth: 2,
+          backgroundColor: '#fcfcfc'
+      },
+      shadowSize: 2
   };
 
   // SPLINE
