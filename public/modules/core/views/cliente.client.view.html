@@ -1,0 +1,43 @@
+<section>
+
+  <div class="row" ng-controller="ClienteController" >    
+  <input id="publish" type="button" value="Publish">
+  <ul id="messages"></ul>
+
+  <div class="col-lg-8">
+      <!-- START bar chart-->
+      <div id="panelChart3" class="panel">
+         <div class="panel-heading">
+            <!-- START button group-->
+            <div dropdown="dropdown2" class="pull-right btn-group">
+               <button type="button" dropdown-toggle="" class="btn btn-default btn-sm">Monthly</button>
+               <ul role="menu" class="dropdown-menu fadeInLeft animated">
+                  <li><a href="#">Daily</a>
+                  </li>
+                  <li><a href="#">Monthly</a>
+                  </li>
+                  <li><a href="#">Yearly</a>
+                  </li>
+               </ul>
+            </div>
+            <!-- END button group-->
+            <div class="panel-title">Cliente</div>
+         </div>
+         <div collapse="panelChart3" class="panel-wrapper">
+            <div class="panel-body">
+               <flot src="'server/chart/barstackedv2.json'" options="barStackedOptions" height="250px"></flot>
+            </div>
+         </div>
+      </div>
+      <!-- END bar chart-->
+   </div>
+</div>   
+
+<script type="text/javascript">
+  $("#publish").click(function () {
+    $.post("/api/stream")
+  })
+</script>
+
+
+</section>

@@ -34,7 +34,22 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
 
     .state('app.home', {
       url: '/home',
-      templateUrl: 'modules/core/views/home.client.view.html',
+      templateUrl: 'modules/core/views/cliente.client.view.html',
+      controller: 'ClienteController',
+      resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
+    })
+
+    .state('app.comunidade', {
+      url: '/comunidade',
+      templateUrl: 'modules/core/views/comunidade.client.view.html',
+      controller: 'ComunidadeController',
+      resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
+    })
+
+    .state('app.prefeitura', {
+      url: '/prefeitura',
+      templateUrl: 'modules/core/views/prefeitura.client.view.html',
+      controller: 'PrefeituraController',
       resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
     })
 

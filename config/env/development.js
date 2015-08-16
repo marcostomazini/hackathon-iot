@@ -4,7 +4,7 @@ module.exports = {
 	//db: 'mongodb://arquitetaweb:arqw3b@ds043082.mongolab.com:43082/heroku_app37384508',
 	db: 'mongodb://localhost/iot',
 	app: {
-		title: 'AComanda - Development Environment'
+		title: 'Sensorizacao - Development Environment'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || '907569132639066',
