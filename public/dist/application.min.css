@@ -6862,7 +6862,7 @@ body {
 }
 .wrapper > .aside {
   position: absolute;
-  width: 220px;
+  width: 0px;
   top: 0;
   left: 0;
   bottom: 0;
@@ -6875,12 +6875,12 @@ body {
 .wrapper > .aside .aside-inner {
   padding-top: 110px;
   height: 100%;
-  width: 220px;
+  width: 0px;
   overflow: hidden;
 }
 .wrapper > .aside > .nav-floating {
   left: inherit;
-  margin-left: 220px;
+  margin-left: 0px;
   z-index: 1110;
   min-width: 190px;
   overflow: auto;
@@ -6980,10 +6980,10 @@ body {
   }
   .wrapper > section,
   .wrapper > footer {
-    margin-left: 220px;
+    margin-left: 0px;
   }
   .wrapper > section.has-sidebar-right {
-    margin-right: 240px;
+    margin-right: 20px;
   }
   .wrapper > section.has-sidebar-right + .offsidebar {
     z-index: 1;
@@ -6991,11 +6991,11 @@ body {
 }
 @media only screen and (max-width: 767px) {
   .wrapper > .aside {
-    margin-left: -220px;
+    margin-left: 0px;
   }
   .aside-toggled .wrapper > section,
   .aside-toggled .wrapper > footer {
-    margin-left: 220px;
+    margin-left: 0px;
   }
   .aside-toggled .wrapper > .aside {
     margin-left: 0;
@@ -7017,8 +7017,8 @@ body {
   }
   .csstransforms3d .wrapper > .aside {
     margin-left: 0;
-    -webkit-transform: translate3d(-220px, 0, 0);
-    transform: translate3d(-220px, 0, 0);
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0);
     -webkit-transition: -webkit-transform 0.3s ease;
     -moz-transition: -moz-transform 0.3s ease;
     -o-transition: -o-transform 0.3s ease;
@@ -7026,8 +7026,8 @@ body {
   }
   .csstransforms3d .aside-toggled .wrapper > section,
   .csstransforms3d .aside-toggled .wrapper > footer {
-    -webkit-transform: translate3d(220px, 0, 0);
-    transform: translate3d(220px, 0, 0);
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0);
   }
   .csstransforms3d .aside-toggled .wrapper > .aside {
     -webkit-transform: translate3d(0, 0, 0);
@@ -7382,7 +7382,7 @@ body {
 }
 @media only screen and (min-width: 768px) {
   .topnavbar .navbar-header {
-    width: 220px;
+    width: 0px;
     text-align: center;
   }
   .topnavbar .navbar-header .navbar-brand {
@@ -7532,7 +7532,7 @@ body {
 }
 @media only screen and (min-width: 768px) {
   .topnavbar .navbar-form {
-    left: 220px;
+    left: 0px;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -7830,7 +7830,7 @@ body {
   top: 0;
   bottom: 0;
   right: 0;
-  width: 235px;
+  width: 15px;
   margin-top: 115px;
   border-left: 1px solid #cccccc;
   background-color: #ffffff;
@@ -7885,15 +7885,15 @@ body {
   }
 }
 .no-csstransforms3d .offsidebar {
-  right: -235px;
+  right: -15px;
 }
 .no-csstransforms3d .offsidebar-open .offsidebar {
   right: 0;
 }
 /* Transformation ready devices*/
 .csstransforms3d .offsidebar {
-  -webkit-transform: translate3d(235px, 0, 0);
-  transform: translate3d(235px, 0, 0);
+  -webkit-transform: translate3d(15px, 0, 0);
+  transform: translate3d(15px, 0, 0);
 }
 .csstransforms3d .offsidebar-open .offsidebar {
   -webkit-transform: translate3d(0, 0, 0);

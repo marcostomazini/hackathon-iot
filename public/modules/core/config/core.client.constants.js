@@ -31,8 +31,11 @@ angular.module('core')
     // jQuery based and standalone scripts
     scripts: {
       'modernizr':          ['/lib/modernizr/modernizr.js'],
-      'icons':              ['/lib/fontawesome/css/font-awesome.min.css',
-                             '/lib/simple-line-icons/css/simple-line-icons.css'],
+      'classyloader':       ['/vendor/jquery-classyloader/js/jquery.classyloader.min.js'],
+      'icons':              ['/vendor/skycons/skycons.js',
+                             '/vendor/fontawesome/css/font-awesome.min.css',
+                             '/vendor/simple-line-icons/css/simple-line-icons.css',
+                             '/vendor/weather-icons/css/weather-icons.min.css'],      
       'screenfull':         ['/lib/screenfull/dist/screenfull.js'],
       'locale':             ['/lib/angular-i18n/angular-locale_pt-br.js'],
       'sparklines':         ['/vendor/sparklines/jquery.sparkline.min.js'],

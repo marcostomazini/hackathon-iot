@@ -50,7 +50,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
       url: '/prefeitura',
       templateUrl: 'modules/core/views/prefeitura.client.view.html',
       controller: 'PrefeituraController',
-      resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
+      resolve: helper.resolveFor('flot-chart','flot-chart-plugins', 'sparklines', 'classyloader')
     })
 
     .state('app.listEmpresas', {

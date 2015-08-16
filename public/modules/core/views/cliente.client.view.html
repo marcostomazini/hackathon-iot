@@ -1,10 +1,9 @@
-<section>
 
   <div class="row" ng-controller="ClienteController" >    
   <input id="publish" type="button" value="Publish">
   <ul id="messages"></ul>
 
-  <div class="col-lg-8">
+  <div class="col-lg-12">
       <!-- START bar chart-->
       <div id="panelChart3" class="panel">
          <div class="panel-heading">
@@ -38,6 +37,3 @@
     $.post("/api/stream")
   })
 </script>
-
-
-</section>
