@@ -57,7 +57,7 @@ var client = mqtt.createClient(mqtt_url.port, mqtt_url.hostname, {
 	        	//salvar dados aqui e mandar para o front
 	            console.log('data:' + msg + '\n\n');
 	        });
-	    });
+	    });	    
 	});
 
 // Logging initialization

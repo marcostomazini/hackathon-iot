@@ -81,6 +81,11 @@ exports.sensorByID = function(req, res, next, id) {
 
                 case 'caixa': // caixa 
                     var resultado = _.take(_.filter(objetos, { 'sensor': 'C' }), 30);
+
+                    _.forEach(resultado, function(item, key) {   
+                        item.valor = parseInt(item.valor) * 10;
+                    });
+
                     res.json(resultado);
                 break;
 
