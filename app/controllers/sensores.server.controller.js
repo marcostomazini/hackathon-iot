@@ -74,7 +74,7 @@ exports.sensorByID = function(req, res, next, id) {
                 var teste = item.valor.split('|');
                 _.forEach(teste, function(item2, key) {   
                     var sensor = item2.split(':');
-                    objetos.push({sensor: sensor[0], valor: sensor[1], data: item.created});
+                    objetos.push({sensor: sensor[0], valor: sensor[1], data: moment(item.created).valueOf()});
                 });
             });            
 
@@ -87,7 +87,6 @@ exports.sensorByID = function(req, res, next, id) {
                         var valor = (20 - parseInt(item.valor)) * 100;
                         if (valor < 0) valor = 0;
                         item.valor = valor;
-                        item.data = moment(item.data).valueOf();
                     });
 
                     res.json(resultado);
@@ -105,6 +104,12 @@ exports.sensorByID = function(req, res, next, id) {
 
                 case 'giro': // giro
                     var resultado = _.take(_.filter(objetos, { 'sensor': 'G' }), 30);
+
+                    _.forEach(resultado, function(item, key) {   
+                        var valor = parseInt(item.valor) * 0.1;
+                        item.valor = valor;
+                    });
+
                     res.json(resultado);
                 break;
 
