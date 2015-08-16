@@ -22,17 +22,7 @@ var fs = require('fs'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
 	path = require('path'),
-	mqtt = require('mqtt'), url = require('url');
-
-	// Parse 
-	var mqtt_url = url.parse(process.env.CLOUDMQTT_URL || 'mqtt://localhost:1883');
-	var auth = (mqtt_url.auth || ':').split(':');
-
-	// Create a client connection
-	var client = mqtt.createClient(mqtt_url.port, mqtt_url.hostname, {
-	  username: auth[0],
-	  password: auth[1] 
-	}); 
+	request = require("request");
 
 module.exports = function(db) {
 	// Initialize express app
@@ -171,28 +161,6 @@ module.exports = function(db) {
 		// Return HTTPS server instance
 		return httpsServer;
 	}
-
-
-	var client = mqtt.createClient(mqtt_url.port, mqtt_url.hostname, {
-	    username: auth[0],
-	    password: auth[1] 
-	});
-	client.on('connect', function() {
-	    client.subscribe('t1', function() {
-	        client.on('message', function(topic, msg, pkt) {
-				//Sensor
-	        	//C:0|U:1020|A:1021|G:0
-
-	        	//var sensores = msg.split('|');
-
-
-
-	        	//salvar dados aqui e mandar para o front
-	            console.log('data:' + msg + '\n\n');
-	        });
-	    });
-	});
-
 
 	// Return Express server instance
 	return app;

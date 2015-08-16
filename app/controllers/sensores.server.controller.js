@@ -51,6 +51,75 @@ exports.list = function(req, res) {
 	});
 };
 
+/**
+ * Show the current sensor
+ */
+exports.read = function(req, res) {
+    res.json(req.sensor);
+};
+
+/**
+ * Sensor
+ */
+exports.sensorByID = function(req, res, next, id) {
+    Sensor.find().sort('-created').exec(function(err, sensores) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            var objetos = [];
+            _.forEach(sensores, function(item, key) {
+                var teste = item.valor.split('|');
+                _.forEach(teste, function(item2, key) {   
+                    var sensor = item2.split(':');
+                    objetos.push({sensor: sensor[0], valor: sensor[1], data: item.created});
+                });
+            });            
+
+            switch(id) {
+
+                case 'caixa': // caixa 
+                    var resultado = _.take(_.filter(objetos, { 'sensor': 'C' }), 30);
+                    res.json(resultado);
+                break;
+
+                case 'solo': // umidade do solo
+                    var resultado = _.take(_.filter(objetos, { 'sensor': 'U' }), 30);
+                    res.json(resultado);
+                break;
+                
+                case 'chuva': // chuva
+                    var resultado = _.take(_.filter(objetos, { 'sensor': 'A' }), 30);
+                    res.json(resultado);
+                break;
+
+                case 'giro': // giro
+                    var resultado = _.take(_.filter(objetos, { 'sensor': 'G' }), 30);
+                    res.json(resultado);
+                break;
+
+                case 'temperatura': // temperatura
+                    var resultado = _.take(_.filter(objetos, { 'sensor': 'T' }), 30);
+                    res.json(resultado);
+                break;
+
+                case 'ar': // humidade do ar
+                    var resultado = _.take(_.filter(objetos, { 'sensor': 'H' }), 30);
+                    res.json(resultado);
+                break;
+
+                default:             // Default executes if the case labels
+                    res.json({message: 'erro'});
+                break;
+
+            }
+
+            //res.json(sensores);
+        }
+    });
+};
+
 exports.stream = function(req,res) {
     // set timeout as high as possible
     req.socket.setTimeout(Number.MAX_VALUE);

@@ -6,9 +6,9 @@
 angular.module('core').controller('AppController',
   ['$rootScope', '$scope', '$state', '$translate', '$window', '$localStorage', 
   '$timeout', '$location','toggleStateService', 'colors', 'browser', 'cfpLoadingBar', 
-  'Authentication', 'Empresas', 
+  'Authentication', 'Empresas', 'Sensores', 
   function($rootScope, $scope, $state, $translate, $window, $localStorage, 
-    $timeout, $location, toggle, colors, browser, cfpLoadingBar, Authentication, Empresas) {
+    $timeout, $location, toggle, colors, browser, cfpLoadingBar, Authentication, Empresas, Sensores) {
     "use strict";
 
     // handles the callback from the received event
@@ -17,6 +17,17 @@ angular.module('core').controller('AppController',
           //$scope.msg = JSON.parse(msg.data)
           $('#messages').append("<li>" + msg.data + "</li>") 
 
+
+        // Create new cliente object
+debugger
+        var sensor = undefined;
+          sensor = new Sensores({tipo: 'todos', valor: msg.data});
+          // Redirect after save
+           sensor.$save(function(response) {
+
+           }, function(errorResponse) {
+
+           });
           // C:0|U:1020|A:1021|G:0
         });
     }
