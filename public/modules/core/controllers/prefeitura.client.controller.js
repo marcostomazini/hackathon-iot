@@ -1,6 +1,18 @@
 angular.module('core').controller('PrefeituraController', ['$scope', 'ChartData', '$timeout', function($scope, ChartData, $timeout) {
   'use strict';
   
+//   // handles the callback from the received event
+//   var handleCallback = function (msg) {
+//       $scope.$apply(function () {
+//         //$scope.msg = JSON.parse(msg.data)
+//         $('#messages').append("<li>" + msg.data + "</li>") 
+//       });
+//   }
+
+// debugger
+//   var source = new EventSource('/api/stream');
+//   source.addEventListener('message', handleCallback, false);
+
   // BAR
   // ----------------------------------- 
   $scope.barData = ChartData.load('server/chart/bar.json');

@@ -77,7 +77,7 @@ exports.stream = function(req,res) {
     client.on('connect', function() {
         client.subscribe('t1', function() {
             client.on('message', function(topic, msg, pkt) {
-                res.write('data:' + msg + '\n\n');
+                res.write('data:' + msg + '\n\n');                
             });
         });
     });
@@ -98,7 +98,8 @@ exports.publish = function(req,res)
         password: auth[1] 
     });
     client.on('connect', function() {
-        client.publish('t1', new Date().toString(), function() {
+        //client.publish('t1', new Date().toString(), function() {
+        client.publish('t1', 'C:230|U:1020|A:1021|G:123', function() {
             client.end();
             res.writeHead(204, { 'Connection': 'keep-alive' });
             res.end();

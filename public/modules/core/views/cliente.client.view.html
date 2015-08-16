@@ -5,45 +5,39 @@
         border-top: none;
         border-radius: 8px;
     }
+
+    .panel-heading{
+        font-weight: bold;
+        color:black;
+    }
 </style>
 
-<div class="row" ng-controller="ClienteController">
-    <input id="publish" type="button" value="Publish">
-    <ul id="messages"></ul>
-    <div class="col-lg-12">
-        <!-- START bar chart-->
-        <div id="panelChart3" class="panel col-md-6 col-lg-6">
-            <div class="panel-heading">
-                <div class="panel-title">Caixa D'agua</div>
-            </div>
-            <div collapse="panelChart3" class="panel-wrapper">
-                <div class="panel-body caixa-dagua water">
-                    <flot src="'server/chart/volumeDaCaixa.json'" options="barStackedOptions" height="250px"></flot>
+<div ng-controller="ClienteController">
+    <div class="row">
+        <input id="publish" type="button" value="Publish">
+        <ul id="messages"></ul>
+        <div class="col-lg-12">
+            <!-- START bar chart-->
+            <div id="panelChart3" class="panel panel-default col-sm-offset-3 col-sm-offset-3 col-ls-offset-3 col-sm-6 col-md-6 col-lg-6">
+                <div class="panel-heading">
+                    <div class="panel-title">Sua Caixa D'agua</div>
+                </div>
+                <div collapse="panelChart3" class="panel-wrapper">
+                    <div class="panel-body caixa-dagua water">
+                        <flot src="'server/chart/volumeDaCaixa.json'" options="barStackedOptions" height="250px"></flot>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="panelChart3" class="panel col-md-6 col-lg-6">
-            <div class="panel-heading">
-                <!-- START button group-->
-                <div dropdown="dropdown2" class="pull-right btn-group">
-                    <button type="button" dropdown-toggle="" class="btn btn-default btn-sm">Monthly</button>
-                    <ul role="menu" class="dropdown-menu fadeInLeft animated">
-                        <li>
-                            <a href="#">Daily</a>
-                        </li>
-                        <li>
-                            <a href="#">Monthly</a>
-                        </li>
-                        <li>
-                            <a href="#">Yearly</a>
-                        </li>
-                    </ul>
+        <div class="row">
+            <div id="panelChart9" class="panel col-sm-offset-3 col-sm-offset-3 col-ls-offset-3 col-sm-6 col-md-6 col-lg-6">
+                <div class="panel-heading">
+                    <div class="panel-title">Website Performance</div>
                 </div>
-                <!-- END button group-->
-            </div>
-            <div collapse="panelChart3" class="panel-wrapper">
-                <div class="panel-body">
-                    <flot src="'server/chart/volumeDaCaixa.json'" options="barStackedOptions" height="250px"></flot>
+                <div collapse="panelChart9" class="panel-wrapper">
+                    <div class="panel-body">
+                        <flot src="'server/chart/caixaDaguaHistorico.json'" options="caixaDaguaHistoricoOptions" height="300px"></flot>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,27 +115,6 @@
 <!-- END widgets box-->
 <div class="row">
     <!-- START dashboard main content-->
-    <div class="col-lg-9">
-        <!-- START chart-->
-        <div class="row">
-            <div class="col-lg-12">
-                <!-- START widget-->
-                <div id="panelChart9" ng-controller="PrefeituraController" class="panel panel-default">
-                    <div class="panel-heading">
-                        <paneltool tool-collapse="tool-collapse" tool-refresh="traditional"></paneltool>
-                        <div class="panel-title">Inbound visitor statistics</div>
-                    </div>
-                    <div collapse="panelChart9" class="panel-wrapper">
-                        <div class="panel-body">
-                            <flot dataset="splineData" options="splineOptions" height="250px"></flot>
-                        </div>
-                    </div>
-                </div>
-                <!-- END widget-->
-            </div>
-        </div>
-        <!-- END chart-->
-    </div>
     <!-- END dashboard main content-->
     <!-- START dashboard sidebar-->
     <aside class="col-lg-3">
@@ -168,24 +141,12 @@
     </aside>
     <!-- END dashboard sidebar-->
 </div>
-
 <div class="row">
     <div class="col-lg-12">
         <!-- START widget-->
-        <div id="panelChart9" class="panel panel-default">
-            <div class="panel-heading">
-                <div class="panel-title">Website Performance</div>
-            </div>
-            <div collapse="panelChart9" class="panel-wrapper">
-                <div class="panel-body">
-                    <flot src="'server/chart/splinev3.json'" options="splineOptions" height="300px"></flot>
-                </div>
-            </div>
-        </div>
         <!-- END widget-->
     </div>
 </div>
-
 <div class="row">
     <div class="col-lg-12">
         <div class="panel widget">
@@ -248,7 +209,12 @@
     </div>
 </div>
 <script type="text/javascript">
-    $("#publish").click(function () {
-        $.post("/api/stream")
-    })
+    //you don't need this, just used for changing background
+    jQuery(function ($) {
+
+        $("#publish").click(function () {
+            $.post("/api/stream")
+        })
+
+    });
 </script>

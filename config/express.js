@@ -10,7 +10,7 @@ var fs = require('fs'),
 	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
 	session = require('express-session'),
-	compress = require('compression'),
+	//compress = require('compression'),
 	methodOverride = require('method-override'),
 	cookieParser = require('cookie-parser'),
 	helmet = require('helmet'),
@@ -21,7 +21,18 @@ var fs = require('fs'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path');
+	path = require('path'),
+	mqtt = require('mqtt'), url = require('url');
+
+	// Parse 
+	var mqtt_url = url.parse(process.env.CLOUDMQTT_URL || 'mqtt://localhost:1883');
+	var auth = (mqtt_url.auth || ':').split(':');
+
+	// Create a client connection
+	var client = mqtt.createClient(mqtt_url.port, mqtt_url.hostname, {
+	  username: auth[0],
+	  password: auth[1] 
+	}); 
 
 module.exports = function(db) {
 	// Initialize express app
@@ -47,12 +58,12 @@ module.exports = function(db) {
 	});
 
 	// Should be placed before express.static
-	app.use(compress({
-		filter: function(req, res) {
-			return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
-		},
-		level: 9
-	}));
+	// app.use(compress({
+	// 	filter: function(req, res) {
+	// 		return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
+	// 	},
+	// 	level: 9
+	// }));
 
 	// Showing stack errors
 	app.set('showStackError', true);
@@ -160,6 +171,28 @@ module.exports = function(db) {
 		// Return HTTPS server instance
 		return httpsServer;
 	}
+
+
+	var client = mqtt.createClient(mqtt_url.port, mqtt_url.hostname, {
+	    username: auth[0],
+	    password: auth[1] 
+	});
+	client.on('connect', function() {
+	    client.subscribe('t1', function() {
+	        client.on('message', function(topic, msg, pkt) {
+				//Sensor
+	        	//C:0|U:1020|A:1021|G:0
+
+	        	//var sensores = msg.split('|');
+
+
+
+	        	//salvar dados aqui e mandar para o front
+	            console.log('data:' + msg + '\n\n');
+	        });
+	    });
+	});
+
 
 	// Return Express server instance
 	return app;
