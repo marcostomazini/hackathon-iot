@@ -34,7 +34,8 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
 
     .state('app.home', {
       url: '/home',
-      templateUrl: 'modules/core/views/home.client.view.html'
+      templateUrl: 'modules/core/views/home.client.view.html',
+      resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
     })
 
     .state('app.listEmpresas', {

@@ -34,7 +34,20 @@ angular.module('core')
       'icons':              ['/lib/fontawesome/css/font-awesome.min.css',
                              '/lib/simple-line-icons/css/simple-line-icons.css'],
       'screenfull':         ['/lib/screenfull/dist/screenfull.js'],
-      'locale':             ['/lib/angular-i18n/angular-locale_pt-br.js']
+      'locale':             ['/lib/angular-i18n/angular-locale_pt-br.js'],
+      'sparklines':         ['/vendor/sparklines/jquery.sparkline.min.js'],
+      'flot-chart':         ['/vendor/Flot/jquery.flot.js'],
+      'flot-chart-plugins': ['/vendor/flot.tooltip/js/jquery.flot.tooltip.min.js',
+                             '/vendor/Flot/jquery.flot.resize.js',
+                             '/vendor/Flot/jquery.flot.pie.js',
+                             '/vendor/Flot/jquery.flot.time.js',
+                             '/vendor/Flot/jquery.flot.categories.js',
+                             '/vendor/flot-spline/js/jquery.flot.spline.min.js'],
+      'chartjs':            ['/vendor/Chart.js/Chart.js'],
+      'morris':             ['/vendor/raphael/raphael.js',
+                             '/vendor/morris.js/morris.js',
+                             '/vendor/morris.js/morris.css'],
+      'loaders.css':        ['/vendor/loaders.css/loaders.css']
     },
     // Angular based script (use the right module name)
     modules: [
