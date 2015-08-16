@@ -1,7 +1,7 @@
 angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '$timeout', '$interval', function ($scope, ChartData, $timeout, $interval) {
     'use strict';
 
-    $interval(function () {
+    $interval(function () { 
         $.getJSON("/api/sensor/caixa", function (data) {
             try {
                     var dado = data[0];
