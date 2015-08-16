@@ -119,6 +119,22 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
     // SPLINE
     // ----------------------------------- 
     $//scope.splineData = ChartData.load('server/chart/spline.json');
+    $scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
+
+    function updateHistorico() {
+
+        $.getJSON("/api/sensor/caixa-historico", function (data) {
+            try {
+                    $scope.historicoDataset = data             
+            }
+            catch (ex) { }
+        });
+        //$scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
+    }
+
+    updateHistorico();
+    $interval(updateHistorico, 2000);
+
     $scope.caixaDaguaHistoricoOptions = {
         legend: {
             position: 'nw'

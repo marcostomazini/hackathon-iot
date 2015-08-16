@@ -100,7 +100,8 @@
             </div>
             <div collapse="panelChart9" class="panel-wrapper">
                 <div class="panel-body">
-                    <flot src="'/api/sensor/caixa-historico'" options="caixaDaguaHistoricoOptions" height="300px"></flot>
+                    <flot dataset="historicoDataset" id="plotHistorico" options="caixaDaguaHistoricoOptions" height="300px"></flot>
+                    <!-- <flot src="'/api/sensor/caixa-historico'" id="plotHistorico" options="caixaDaguaHistoricoOptions" height="300px"></flot> -->
                     <!-- <flot src="'/server/chart/caixaDaguaHistorico.json'" options="caixaDaguaHistoricoOptions" height="300px"></flot> -->
                 </div>
             </div>
