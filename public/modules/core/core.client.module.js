@@ -30,8 +30,8 @@ angular.module('core').run(["$rootScope", "$state", "$stateParams",  '$window', 
     // Scope Globals
     // ----------------------------------- 
     $rootScope.app = {
-      name: 'AComanda',
-      description: 'Gerenciamento para bares e restaurantes',
+      name: 'Afftasarden',
+      description: 'Sensorizacao',
       year: ((new Date()).getFullYear()),
       layout: {
         isFixed: true,

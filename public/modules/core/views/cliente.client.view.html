@@ -1,7 +1,7 @@
 
   <div class="row" ng-controller="ClienteController" >    
-  <input id="publish" type="button" value="Publish">
-  <ul id="messages"></ul>
+    <input id="publish" type="button" value="Publish">
+    <ul id="messages"></ul>
 
   <div class="col-lg-12">
       <!-- START bar chart-->
@@ -31,6 +31,205 @@
       <!-- END bar chart-->
    </div>
 </div>   
+
+<!-- START widgets box-->
+<div class="row">
+   <div class="col-lg-3 col-sm-6">
+      <!-- START widget-->
+      <div class="panel widget bg-primary">
+         <div class="row row-table">
+            <div class="col-xs-4 text-center bg-primary-dark pv-lg">
+               <em class="icon-cloud-upload fa-3x"></em>
+            </div>
+            <div class="col-xs-8 pv-lg">
+               <div class="h2 mt0">1700</div>
+               <div class="text-uppercase">Uploads</div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="col-lg-3 col-sm-6">
+      <!-- START widget-->
+      <div class="panel widget bg-purple">
+         <div class="row row-table">
+            <div class="col-xs-4 text-center bg-purple-dark pv-lg">
+               <em class="icon-globe fa-3x"></em>
+            </div>
+            <div class="col-xs-8 pv-lg">
+               <div class="h2 mt0">700
+                  <small>GB</small>
+               </div>
+               <div class="text-uppercase">Quota</div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="col-lg-3 col-md-6 col-sm-12">
+      <!-- START widget-->
+      <div class="panel widget bg-green">
+         <div class="row row-table">
+            <div class="col-xs-4 text-center bg-green-dark pv-lg">
+               <em class="icon-bubbles fa-3x"></em>
+            </div>
+            <div class="col-xs-8 pv-lg">
+               <div class="h2 mt0">500</div>
+               <div class="text-uppercase">Reviews</div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="col-lg-3 col-md-6 col-sm-12">
+      <!-- START date widget-->
+      <div class="panel widget">
+         <div class="row row-table">
+            <div class="col-xs-4 text-center bg-green pv-lg">
+               <!-- See formats: https://docs.angularjs.org/api/ng/filter/date-->
+               <now format="MMMM" class="text-sm"></now>
+               <br/>
+               <now format="d" class="h2 mt0"></now>
+            </div>
+            <div class="col-xs-8 pv-lg">
+               <now format="EEEE" class="text-uppercase"></now>
+               <br/>
+               <now format="h:mm" class="h2 mt0"></now>
+               <now format="a" class="text-muted text-sm"></now>
+            </div>
+         </div>
+      </div>
+      <!-- END date widget    -->
+   </div>
+</div>
+<!-- END widgets box-->
+<div class="row">
+   <!-- START dashboard main content-->
+   <div class="col-lg-9">
+      <!-- START chart-->
+      <div class="row">
+         <div class="col-lg-12">
+            <!-- START widget-->
+            <div id="panelChart9" ng-controller="PrefeituraController" class="panel panel-default">
+               <div class="panel-heading">
+                  <paneltool tool-collapse="tool-collapse" tool-refresh="traditional"></paneltool>
+                  <div class="panel-title">Inbound visitor statistics</div>
+               </div>
+               <div collapse="panelChart9" class="panel-wrapper">
+                  <div class="panel-body">
+                     <flot dataset="splineData" options="splineOptions" height="250px"></flot>
+                  </div>
+               </div>
+            </div>
+            <!-- END widget-->
+         </div>
+      </div>
+      <!-- END chart-->      
+   </div>
+   <!-- END dashboard main content-->
+   <!-- START dashboard sidebar-->
+   <aside class="col-lg-3">
+      <!-- START loader widget-->
+      <div class="panel panel-default">
+         <div class="panel-body">
+            <a href="#" class="text-muted pull-right">
+               <em class="fa fa-arrow-right"></em>
+            </a>
+            <div class="text-info">Average Monthly Uploads</div>
+            <canvas classyloader="" data-percentage="70" data-speed="20" data-font-size="40px" data-diameter="70" data-line-color="{{colorByName('info')}}" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"
+            data-rounded-line="true" class="center-block"></canvas>
+            <div sparkline="" data-bar-color="{{colorByName('info')}}" data-height="30" data-bar-width="5" data-bar-spacing="2" values="5,4,8,7,8,5,4,6,5,5,9,4,6,3,4,7,5,4,7" class="text-center"></div>
+         </div>
+         <div class="panel-footer">
+            <p class="text-muted">
+               <em class="fa fa-upload fa-fw"></em>
+               <span>This Month</span>
+               <span class="text-dark">1000 Gb</span>
+            </p>
+         </div>
+      </div>
+      <!-- END loader widget-->
+   </aside>
+   <!-- END dashboard sidebar-->
+</div>
+
+
+<div class="row">
+   <div class="col-lg-12">
+      <!-- START widget-->
+      <div id="panelChart9" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Website Performance</div>
+         </div>
+         <div collapse="panelChart9" class="panel-wrapper">
+            <div class="panel-body">
+               <flot src="'server/chart/splinev3.json'" options="splineOptions" height="300px"></flot>
+            </div>
+         </div>
+      </div>
+      <!-- END widget-->
+   </div>
+</div>
+
+
+<div class="row">
+   <div class="col-lg-12">
+      <div class="panel widget">
+         <div class="row row-table">
+            <div class="col-md-2 col-sm-3 col-xs-6 text-center bg-info pv-xl">
+               <!-- Allowed types-->
+               <!-- "clear-day", "clear-night", "partly-cloudy-day", "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind", "fog"-->
+               <div skycon="clear-day" width="80" height="80"></div>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-6 pv br">
+               <div class="h1 m0 text-bold">32&deg;</div>
+               <div class="text-uppercase">Clear</div>
+            </div>
+            <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+               <div class="text-info text-sm">10 AM</div>
+               <div class="text-muted text-md">
+                  <em class="wi wi-day-cloudy"></em>
+               </div>
+               <div class="text-info">
+                  <em class="wi wi-sprinkles"></em>
+                  <span class="text-muted">20%</span>
+               </div>
+               <div class="text-muted">27&deg;</div>
+            </div>
+            <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+               <div class="text-info text-sm">11 AM</div>
+               <div class="text-muted text-md">
+                  <em class="wi wi-day-cloudy"></em>
+               </div>
+               <div class="text-info">
+                  <em class="wi wi-sprinkles"></em>
+                  <span class="text-muted">30%</span>
+               </div>
+               <div class="text-muted">28&deg;</div>
+            </div>
+            <div class="col-md-2 hidden-sm hidden-xs pv text-center br">
+               <div class="text-info text-sm">12 PM</div>
+               <div class="text-muted text-md">
+                  <em class="wi wi-day-cloudy"></em>
+               </div>
+               <div class="text-info">
+                  <em class="wi wi-sprinkles"></em>
+                  <span class="text-muted">20%</span>
+               </div>
+               <div class="text-muted">30&deg;</div>
+            </div>
+            <div class="col-md-2 hidden-sm hidden-xs pv text-center">
+               <div class="text-info text-sm">1 PM</div>
+               <div class="text-muted text-md">
+                  <em class="wi wi-day-sunny-overcast"></em>
+               </div>
+               <div class="text-info">
+                  <em class="wi wi-sprinkles"></em>
+                  <span class="text-muted">0%</span>
+               </div>
+               <div class="text-muted">30&deg;</div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
 <script type="text/javascript">
   $("#publish").click(function () {
