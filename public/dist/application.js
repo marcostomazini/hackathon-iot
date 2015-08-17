@@ -2921,8 +2921,8 @@ angular.module('core').run(["$rootScope", "$state", "$stateParams",  '$window', 
     // Scope Globals
     // ----------------------------------- 
     $rootScope.app = {
-      name: 'AComanda',
-      description: 'Gerenciamento para bares e restaurantes',
+      name: 'Afftasarden',
+      description: 'Sensorizacao',
       year: ((new Date()).getFullYear()),
       layout: {
         isFixed: true,
@@ -3382,14 +3382,14 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
       url: '/home',
       templateUrl: 'modules/core/views/cliente.client.view.html',
       controller: 'ClienteController',
-      resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
+      resolve: helper.resolveFor('flot-chart','flot-chart-plugins', 'sparklines', 'classyloader')
     })
 
     .state('app.comunidade', {
       url: '/comunidade',
       templateUrl: 'modules/core/views/comunidade.client.view.html',
       controller: 'ComunidadeController',
-      resolve: helper.resolveFor('flot-chart','flot-chart-plugins')
+      resolve: helper.resolveFor('flot-chart','flot-chart-plugins', 'sparklines', 'classyloader')
     })
 
     .state('app.prefeitura', {
@@ -3511,10 +3511,31 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
 angular.module('core').controller('AppController',
   ['$rootScope', '$scope', '$state', '$translate', '$window', '$localStorage', 
   '$timeout', '$location','toggleStateService', 'colors', 'browser', 'cfpLoadingBar', 
-  'Authentication', 'Empresas', 
+  'Authentication', 'Empresas', 'Sensores', 
   function($rootScope, $scope, $state, $translate, $window, $localStorage, 
-    $timeout, $location, toggle, colors, browser, cfpLoadingBar, Authentication, Empresas) {
+    $timeout, $location, toggle, colors, browser, cfpLoadingBar, Authentication, Empresas, Sensores) {
     "use strict";
+
+    // handles the callback from the received event
+    var handleCallback = function (msg) {
+        $scope.$apply(function () {
+          //$scope.msg = JSON.parse(msg.data)
+          $('#messages').append("<li>" + msg.data + "</li>") 
+        // Create new cliente object
+        var sensor = undefined;
+          sensor = new Sensores({tipo: 'todos', valor: msg.data});
+          // Redirect after save
+           sensor.$save(function(response) {
+
+           }, function(errorResponse) {
+
+           });
+          // C:0|U:1020|A:1021|G:0
+        });
+    }
+
+    var source = new EventSource('/api/stream');
+    source.addEventListener('message', handleCallback, false);
 
     // This provides Authentication context.
     $scope.authentication = Authentication;
@@ -3668,356 +3689,443 @@ angular.module('core').controller('AppController',
     });
 
 }]);
-angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '$timeout', function($scope, ChartData, $timeout) {
-  'use strict';
-  
-  // BAR
-  // ----------------------------------- 
-  $scope.barData = ChartData.load('server/chart/bar.json');
-  $scope.barOptions = {
-      series: {
-          bars: {
-              align: 'center',
-              lineWidth: 0,
-              show: true,
-              barWidth: 0.6,
-              fill: 0.9
-          }
-      },
-      grid: {
-          borderColor: '#eee',
-          borderWidth: 1,
-          hoverable: true,
-          backgroundColor: '#fcfcfc'
-      },
-      tooltip: true,
-      tooltipOpts: {
-          content: function (label, x, y) { return x + ' : ' + y; }
-      },
-      xaxis: {
-          tickColor: '#fcfcfc',
-          mode: 'categories'
-      },
-      yaxis: {
-          position: ($scope.app.layout.isRTL ? 'right' : 'left'),
-          tickColor: '#eee'
-      },
-      shadowSize: 0
-  };
+angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '$timeout', '$interval', function ($scope, ChartData, $timeout, $interval) {
+    'use strict';
 
-  // BAR STACKED
-  // ----------------------------------- 
-  $scope.barStackeData = ChartData.load('server/chart/barstacked.json');
-  $scope.barStackedOptions = {
-      series: {
-          stack: true,
-          bars: {
-              align: 'center',
-              lineWidth: 0,
-              show: true,
-              barWidth: 0.6,
-              fill: 0.9
-          }
-      },
-      grid: {
-          borderColor: '#eee',
-          borderWidth: 1,
-          hoverable: true,
-          backgroundColor: '#fcfcfc'
-      },
-      tooltip: true,
-      tooltipOpts: {
-          content: function (label, x, y) { return x + ' : ' + y; }
-      },
-      xaxis: {
-          tickColor: '#fcfcfc',
-          mode: 'categories'
-      },
-      yaxis: {
-          min: 0,
-          max: 200, // optional: use it for a clear represetation
-          position: ($scope.app.layout.isRTL ? 'right' : 'left'),
-          tickColor: '#eee'
-      },
-      shadowSize: 0
-  };
+    $interval(function () { 
+        $.getJSON("/api/sensor/caixa", function (data) {
+            try {
+                    var dado = data[0];
+                    var litros = parseInt(dado.valor);
+                    var pctg = Math.floor(litros / 2000 * 100);
+                    if (pctg > 100) pctg = 100;
+                    $('#water').text(litros.toString() + " litros");
+                    if (Math.abs(data[0].valor - data[10].valor) > 20)
+                        $('#water').toggleClass("animate").css({ height: pctg + "%" });                
+            }
+            catch (ex) { }
+        });
 
-  // SPLINE
-  // ----------------------------------- 
-  $scope.splineData = ChartData.load('server/chart/spline.json');
-  $scope.splineOptions = {
-      series: {
-          lines: {
-              show: false
-          },
-          points: {
-              show: true,
-              radius: 4
-          },
-          splines: {
-              show: true,
-              tension: 0.4,
-              lineWidth: 1,
-              fill: 0.5
-          }
-      },
-      grid: {
-          borderColor: '#eee',
-          borderWidth: 1,
-          hoverable: true,
-          backgroundColor: '#fcfcfc'
-      },
-      tooltip: true,
-      tooltipOpts: {
-          content: function (label, x, y) { return x + ' : ' + y; }
-      },
-      xaxis: {
-          tickColor: '#fcfcfc',
-          mode: 'categories'
-      },
-      yaxis: {
-          min: 0,
-          max: 150, // optional: use it for a clear represetation
-          tickColor: '#eee',
-          position: ($scope.app.layout.isRTL ? 'right' : 'left'),
-          tickFormatter: function (v) {
-              return v/* + ' visitors'*/;
-          }
-      },
-      shadowSize: 0
-  };
+        //$('#historicoConsumo').setData().setupGrid();
+    }, 2000);
 
-  // AREA
-  // ----------------------------------- 
-  $scope.areaData = ChartData.load('server/chart/area.json');
-  $scope.areaOptions = {
-      series: {
-          lines: {
-              show: true,
-              fill: 0.8
-          },
-          points: {
-              show: true,
-              radius: 4
-          }
-      },
-      grid: {
-          borderColor: '#eee',
-          borderWidth: 1,
-          hoverable: true,
-          backgroundColor: '#fcfcfc'
-      },
-      tooltip: true,
-      tooltipOpts: {
-          content: function (label, x, y) { return x + ' : ' + y; }
-      },
-      xaxis: {
-          tickColor: '#fcfcfc',
-          mode: 'categories'
-      },
-      yaxis: {
-          min: 0,
-          tickColor: '#eee',
-          position: ($scope.app.layout.isRTL ? 'right' : 'left'),
-          tickFormatter: function (v) {
-              return v + ' visitors';
-          }
-      },
-      shadowSize: 0
-  };
-
-  // LINE
-  // ----------------------------------- 
-  $scope.lineData = ChartData.load('server/chart/line.json');
-  $scope.lineOptions = {
-      series: {
-          lines: {
-              show: true,
-              fill: 0.01
-          },
-          points: {
-              show: true,
-              radius: 4
-          }
-      },
-      grid: {
-          borderColor: '#eee',
-          borderWidth: 1,
-          hoverable: true,
-          backgroundColor: '#fcfcfc'
-      },
-      tooltip: true,
-      tooltipOpts: {
-          content: function (label, x, y) { return x + ' : ' + y; }
-      },
-      xaxis: {
-          tickColor: '#eee',
-          mode: 'categories'
-      },
-      yaxis: {
-          position: ($scope.app.layout.isRTL ? 'right' : 'left'),
-          tickColor: '#eee'
-      },
-      shadowSize: 0
-  };
-
-  // PIE
-  // ----------------------------------- 
-  $scope.pieData = ChartData.load('server/chart/pie.json');
-  $scope.pieOptions = {
-      series: {
-          pie: {
-              show: true,
-              innerRadius: 0,
-              label: {
-                  show: true,
-                  radius: 0.8,
-                  formatter: function (label, series) {
-                      return '<div class="flot-pie-label">' +
-                      //label + ' : ' +
-                      Math.round(series.percent) +
-                      '%</div>';
-                  },
-                  background: {
-                      opacity: 0.8,
-                      color: '#222'
-                  }
-              }
-          }
-      }
-  };
-
-  // DONUT
-  // ----------------------------------- 
-  $scope.donutData = ChartData.load('server/chart/donut.json');
-  $scope.donutOptions = {
-      series: {
-          pie: {
-              show: true,
-              innerRadius: 0.5 // This makes the donut shape
-          }
-      }
-  };
-
-
-  // REALTIME
-  // ----------------------------------- 
-  $scope.realTimeOptions = {
-      series: {
-        lines: { show: true, fill: true, fillColor:  { colors: ['#a0e0f3', '#23b7e5'] } },
-        shadowSize: 0 // Drawing is faster without shadows
-      },
-      grid: {
-          show:false,
-          borderWidth: 0,
-          minBorderMargin: 20,
-          labelMargin: 10
-      },
-      xaxis: {
-        tickFormatter: function() {
-            return "";
-        }
-      },
-      yaxis: {
-          min: 0,
-          max: 110
-      },
-      legend: {
-          show: true
-      },
-      colors: ["#23b7e5"]
-  };
-
-  // Generate random data for realtime demo
-  var data = [], totalPoints = 300;
-    
-  update();
-
-  function getRandomData() {
-    if (data.length > 0)
-      data = data.slice(1);
-    // Do a random walk
-    while (data.length < totalPoints) {
-      var prev = data.length > 0 ? data[data.length - 1] : 50,
-        y = prev + Math.random() * 10 - 5;
-      if (y < 0) {
-        y = 0;
-      } else if (y > 100) {
-        y = 100;
-      }
-      data.push(y);
-    }
-    // Zip the generated y values with the x values
-    var res = [];
-    for (var i = 0; i < data.length; ++i) {
-      res.push([i, data[i]]);
-    }
-    return [res];
-  }
-  function update() {
-    $scope.realTimeData = getRandomData();
-    $timeout(update, 30);
-  }
-  // end random data generation
-
-
-  // PANEL REFRESH EVENTS
-  // ----------------------------------- 
-
-  $scope.$on('panel-refresh', function(event, id) {
-    
-    console.log('Simulating chart refresh during 3s on #'+id);
-
-    // Instead of timeout you can request a chart data
-    $timeout(function(){
-      
-      // directive listen for to remove the spinner 
-      // after we end up to perform own operations
-      $scope.$broadcast('removeSpinner', id);
-      
-      console.log('Refreshed #' + id);
-
-    }, 3000);
-
-  });
-
-
-  // PANEL DISMISS EVENTS
-  // ----------------------------------- 
-
-  // Before remove panel
-  $scope.$on('panel-remove', function(event, id, deferred){
-    
-    console.log('Panel #' + id + ' removing');
-    
-    // Here is obligatory to call the resolve() if we pretend to remove the panel finally
-    // Not calling resolve() will NOT remove the panel
-    // It's up to your app to decide if panel should be removed or not
-    deferred.resolve();
-  
-  });
-
-  // Panel removed ( only if above was resolved() )
-  $scope.$on('panel-removed', function(event, id){
-
-    console.log('Panel #' + id + ' removed');
-
-  });
-  
-}]).service('ChartData', ["$resource", function($resource){
-  
-  var opts = {
-      get: { method: 'GET', isArray: true }
+    // BAR
+    // ----------------------------------- 
+    $scope.barData = ChartData.load('server/chart/bar.json');
+    $scope.barOptions = {
+        series: {
+            bars: {
+                align: 'center',
+                lineWidth: 0,
+                show: true,
+                barWidth: 0.6,
+                fill: 0.9
+            }
+        },
+        grid: {
+            borderColor: '#eee',
+            borderWidth: 0,
+            hoverable: true,
+            backgroundColor: '#fcfcfc'
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: function (label, x, y) { return x + ' : ' + y; }
+        },
+        xaxis: {
+            tickColor: '#fcfcfc',
+            mode: 'categories'
+        },
+        yaxis: {
+            position: ($scope.app.layout.isRTL ? 'right' : 'left'),
+            tickColor: '#eee'
+        },
+        shadowSize: 0
     };
-  return {
-    load: function(source){
-      return $resource(source, {}, opts).get();
+
+    // BAR STACKED
+    // ----------------------------------- 
+    $scope.barStackeData = ChartData.load('server/chart/barstacked.json');
+    $scope.barStackedOptions = {
+        series: {
+            stack: true,
+            bars: {
+                align: 'center',
+                lineWidth: 3,
+                show: true,
+                barWidth: 1,
+                fill: 0.9
+            }
+        },
+        yaxis: {
+            min: 0,
+            max: 100
+        },
+        grid: {
+            show: false,
+            borderColor: 'red',
+            borderWidth: 2,
+            backgroundColor: '#fcfcfc'
+        },
+        shadowSize: 2
+    };
+    $scope.splineOptions = {
+        series: {
+            lines: {
+                show: false
+            },
+            points: {
+                show: true,
+                radius: 4
+            },
+            splines: {
+                show: true,
+                tension: 0.4,
+                lineWidth: 1,
+                fill: 0.5
+            }
+        },
+        grid: {
+            borderColor: '#eee',
+            borderWidth: 1,
+            hoverable: true,
+            backgroundColor: '#fcfcfc'
+        },
+        tooltip: true,
+        xaxis: {
+            tickColor: '#fcfcfc',
+            mode: 'categories',
+        },
+        yaxis: {
+            min: 0,
+            max: 150, // optional: use it for a clear represetation
+            tickColor: '#eee',
+            position: ($scope.app.layout.isRTL ? 'right' : 'left'),
+            tickFormatter: function (v) {
+                return v/* + ' visitors'*/;
+            }
+        },
+        shadowSize: 10
+    };
+    // SPLINE
+    // ----------------------------------- 
+    $//scope.splineData = ChartData.load('server/chart/spline.json');
+    $scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
+
+    function updateHistorico() {
+
+        $.getJSON("/api/sensor/caixa-historico", function (data) {
+            try {
+                    $scope.historicoDataset = data             
+            }
+            catch (ex) { }
+        });
+        //$scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
     }
-  };
+
+    updateHistorico();
+    $interval(updateHistorico, 2000);
+
+    $scope.caixaDaguaHistoricoOptions = {
+        legend: {
+            position: 'nw'
+        },
+        series: {
+            lines: {
+                show: false
+            },
+            points: {
+                show: true,
+                radius: 4
+            },
+            splines: {
+                show: true,
+                tension: 0.4,
+                lineWidth: 1,
+                fill: 0.5
+            }
+        },
+        grid: {
+            borderColor: '#eee',
+            borderWidth: 1,
+            hoverable: true,
+            backgroundColor: '#fcfcfc'
+        },
+        tooltip: true,
+        xaxis: {
+            tickColor: '#fcfcfc',
+            mode: 'time',
+            minTickSize: [2, "second"],
+        },
+        yaxis: {
+            min: 0,
+            alignTicksWithAxis: 1,
+            tickColor: '#eee',
+            position: ($scope.app.layout.isRTL ? 'right' : 'left')
+        },
+        shadowSize: 10
+    };
+
+    // AREA
+    // ----------------------------------- 
+    $scope.areaData = ChartData.load('server/chart/area.json');
+    $scope.areaOptions = {
+        series: {
+            lines: {
+                show: true,
+                fill: 0.8
+            },
+            points: {
+                show: true,
+                radius: 4
+            }
+        },
+        grid: {
+            borderColor: '#eee',
+            borderWidth: 1,
+            hoverable: true,
+            backgroundColor: '#fcfcfc'
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: function (label, x, y) { return x + ' : ' + y; }
+        },
+        xaxis: {
+            tickColor: '#fcfcfc',
+            mode: 'categories',
+            alignTicksWithAxis: 10
+        },
+        yaxis: {
+            min: 0,
+            tickColor: '#eee',
+            position: ($scope.app.layout.isRTL ? 'right' : 'left'),
+            tickFormatter: function (v) {
+                return v + ' visitors';
+            }
+        },
+        shadowSize: 0
+    };
+
+    // LINE
+    // ----------------------------------- 
+    $scope.lineData = ChartData.load('server/chart/line.json');
+    $scope.lineOptions = {
+        series: {
+            lines: {
+                show: true,
+                fill: 0.01
+            },
+            points: {
+                show: true,
+                radius: 4
+            }
+        },
+        grid: {
+            borderColor: '#eee',
+            borderWidth: 1,
+            hoverable: true,
+            backgroundColor: '#fcfcfc'
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: function (label, x, y) { return x + ' : ' + y; }
+        },
+        xaxis: {
+            tickColor: '#eee',
+            mode: 'categories'
+        },
+        yaxis: {
+            position: ($scope.app.layout.isRTL ? 'right' : 'left'),
+            tickColor: '#eee'
+        },
+        shadowSize: 0
+    };
+
+    // PIE
+    // ----------------------------------- 
+    $scope.pieData = ChartData.load('server/chart/pie.json');
+    $scope.pieOptions = {
+        series: {
+            pie: {
+                show: true,
+                innerRadius: 0,
+                label: {
+                    show: true,
+                    radius: 0.8,
+                    formatter: function (label, series) {
+                        return '<div class="flot-pie-label">' +
+                        //label + ' : ' +
+                        Math.round(series.percent) +
+                        '%</div>';
+                    },
+                    background: {
+                        opacity: 0.8,
+                        color: '#222'
+                    }
+                }
+            }
+        }
+    };
+
+    // DONUT
+    // ----------------------------------- 
+    $scope.donutData = ChartData.load('server/chart/donut.json');
+    $scope.donutOptions = {
+        series: {
+            pie: {
+                show: true,
+                innerRadius: 0.5 // This makes the donut shape
+            }
+        }
+    };
+
+
+    // REALTIME
+    // ----------------------------------- 
+    $scope.realTimeOptions = {
+        series: {
+            lines: { show: true, fill: true, fillColor: { colors: ['#a0e0f3', '#23b7e5'] } },
+            shadowSize: 0 // Drawing is faster without shadows
+        },
+        grid: {
+            show: false,
+            borderWidth: 0,
+            minBorderMargin: 20,
+            labelMargin: 10
+        },
+        xaxis: {
+            tickFormatter: function () {
+                return "";
+            }
+        },
+        yaxis: {
+            min: 0,
+            max: 110
+        },
+        legend: {
+            show: true
+        },
+        colors: ["#23b7e5"]
+    };
+
+    // Generate random data for realtime demo
+    var data = [], totalPoints = 300;
+
+    update();
+
+    function getRandomData() {
+        if (data.length > 0)
+            data = data.slice(1);
+        // Do a random walk
+        while (data.length < totalPoints) {
+            var prev = data.length > 0 ? data[data.length - 1] : 50,
+              y = prev + Math.random() * 10 - 5;
+            if (y < 0) {
+                y = 0;
+            } else if (y > 100) {
+                y = 100;
+            }
+            data.push(y);
+        }
+        // Zip the generated y values with the x values
+        var res = [];
+        for (var i = 0; i < data.length; ++i) {
+            res.push([i, data[i]]);
+        }
+        return [res];
+    }
+    function update() {
+        $scope.realTimeData = getRandomData();
+        $timeout(update, 30);
+    }
+    // end random data generation
+
+
+    // PANEL REFRESH EVENTS
+    // ----------------------------------- 
+
+    $scope.$on('panel-refresh', function (event, id) {
+
+        console.log('Simulating chart refresh during 3s on #' + id);
+
+        // Instead of timeout you can request a chart data
+        $timeout(function () {
+
+            // directive listen for to remove the spinner 
+            // after we end up to perform own operations
+            $scope.$broadcast('removeSpinner', id);
+
+            console.log('Refreshed #' + id);
+
+        }, 3000);
+
+    });
+
+
+    // PANEL DISMISS EVENTS
+    // ----------------------------------- 
+
+    // Before remove panel
+    $scope.$on('panel-remove', function (event, id, deferred) {
+
+        console.log('Panel #' + id + ' removing');
+
+        // Here is obligatory to call the resolve() if we pretend to remove the panel finally
+        // Not calling resolve() will NOT remove the panel
+        // It's up to your app to decide if panel should be removed or not
+        deferred.resolve();
+
+    });
+
+    // Panel removed ( only if above was resolved() )
+    $scope.$on('panel-removed', function (event, id) {
+
+        console.log('Panel #' + id + ' removed');
+
+    });
+
+}]).service('ChartData', ["$resource", function ($resource) {
+
+    var opts = {
+        get: { method: 'GET', isArray: true }
+    };
+    return {
+        load: function (source) {
+            return $resource(source, {}, opts).get();
+        }
+    };
 }]);
-angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData', '$timeout', function($scope, ChartData, $timeout) {
+angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData', '$timeout', '$interval', function ($scope, ChartData, $timeout,$interval) {
   'use strict';
   
+  $interval(function () {
+      try {
+          for (var i = 2; i <= 8; i++) {
+              var v = parseInt($('.c' + i).text());
+              v = Math.floor(v + Math.random() * 3);
+              $('.c' + i).text(v);
+          }
+      }
+      catch (ex) { }
+  }, 400);
+
+  $interval(function () {
+      try {
+          $.getJSON("/api/sensor/caixa", function (data) {
+              var v = parseInt($(".c1").text());
+              var d1 = parseInt(data[1].valor);
+              var d0 = parseInt(data[0].valor);
+              console.log(d1 + " - " + d0 + " = " + (d1 - d0));
+              console.log(v);
+              var gasto = d1 - d0;
+              if (gasto > 0) {
+                  $(".c1").text(v + gasto);
+              }
+          });
+      }
+      catch (ex) { }
+  }, 2000);
+
   // BAR
   // ----------------------------------- 
   $scope.barData = ChartData.load('server/chart/bar.json');
@@ -4414,9 +4522,40 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		};		
 	}
 ]);
-angular.module('core').controller('PrefeituraController', ['$scope', 'ChartData', '$timeout', function($scope, ChartData, $timeout) {
+angular.module('core').controller('PrefeituraController', ['$scope', 'ChartData', '$timeout', '$interval', function($scope, ChartData, $timeout,$interval) {
   'use strict';
   
+//   // handles the callback from the received event
+//   var handleCallback = function (msg) {
+//       $scope.$apply(function () {
+//         //$scope.msg = JSON.parse(msg.data)
+//         $('#messages').append("<li>" + msg.data + "</li>") 
+//       });
+//   }
+
+// debugger
+//   var source = new EventSource('/api/stream');
+//   source.addEventListener('message', handleCallback, false);
+var t = false
+ $interval(function () { 
+        $.getJSON("/api/sensor/solo", function (data) {
+            try {
+                  var dado = data[0];
+                  if (parseInt(dado.valor) > 1000 && t == false) {                      
+                    t = true;
+                    noty({
+                      text: 'Nascente com estado critico, pois o solo esta bastante seco',
+                      type: 'error'
+                    });
+                  }
+
+            }
+            catch (ex) { }
+        });
+
+        //$('#historicoConsumo').setData().setupGrid();
+    }, 4000);
+
   // BAR
   // ----------------------------------- 
   $scope.barData = ChartData.load('server/chart/bar.json');
@@ -6718,6 +6857,19 @@ angular.module('core').provider('RouteHelpers', ['APP_REQUIRES', function (appRe
 }]);
 
 
+'use strict';
+
+// clientes service used to communicate clientes REST endpoints
+angular.module('core').factory('Sensores', ['$resource',
+	function($resource) {
+
+		var Sensores = $resource('api/sensores/:sensorId', 
+			{ sensorId: '@_id' }, 
+			{ update: { method: 'PUT' } });
+    	
+    	return Sensores;
+	}
+]);
 /**=========================================================
  * Module: toggle-state.js
  * Services to share toggle state functionality

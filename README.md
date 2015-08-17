@@ -1,4 +1,5 @@
-AComanda - Sistema online para gerenciamento de bares e restaurantes
+Hackathon TICNova Maringá 2015
+Projeto H2Okay
 
 Gerar modulo:
 yo meanjs:crud-module <module-name>
