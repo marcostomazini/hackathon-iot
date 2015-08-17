@@ -2,9 +2,9 @@
 
 module.exports = {
 	app: {
-		title: 'AComanda - Gerenciamento online para bares e restaurantes',
-		description: 'Gerenciamento Online para Bares e Restaurantes',
-		keywords: 'Gerencimento, Bares, Restaurantes, Pizzaria'
+		title: 'H2Okay',
+		description: 'Sensorizacao de nascentes e controle de consumo de gastos',
+		keywords: 'abastecimento, meio ambiente'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
