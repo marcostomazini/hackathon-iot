@@ -1,0 +1,22 @@
+<div ng-controller="SimuladorController">
+
+    <div class="row">
+        <input id="publish" ng-model="dados" type="text">
+        <button type="button" ng-click="send()">
+            Enviar
+         </button>         
+    </div>
+
+    <div class="row">
+         <button type="button" ng-click="startRandom()">
+            Simulador Dados
+         </button>
+         <button type="button" ng-click="stopRandom()">
+            Parar simulacao
+         </button>
+    </div>
+
+    <div class="row">
+        <ul id="messages"></ul>
+    </div>
+</div>

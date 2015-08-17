@@ -53,6 +53,12 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
       resolve: helper.resolveFor('flot-chart','flot-chart-plugins', 'sparklines', 'classyloader')
     })
 
+    .state('app.simulador', {
+      url: '/simulador',
+      templateUrl: 'modules/core/views/simulador.client.view.html',
+      controller: 'SimuladorController'
+    })
+
     .state('app.listEmpresas', {
       url: '/cadastros/empresas',
       templateUrl: 'modules/cadastros/empresas/views/list-empresas.client.view.html',

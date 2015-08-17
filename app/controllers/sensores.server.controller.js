@@ -202,13 +202,17 @@ exports.stream = function(req,res) {
 
 exports.publish = function(req,res)
 {
+
+    console.log(req.body);
+
     var client = mqtt.createClient(mqtt_url.port, mqtt_url.hostname, {
         username: auth[0],
         password: auth[1] 
     });
     client.on('connect', function() {
         //client.publish('t1', new Date().toString(), function() {
-        client.publish('t1', 'C:230|U:1020|A:1021|G:123', function() {
+        //client.publish('t1', 'C:230|U:1020|A:1021|G:123', function() {
+        client.publish('t1', req.body.info, function() {
             client.end();
             res.writeHead(204, { 'Connection': 'keep-alive' });
             res.end();

@@ -16,7 +16,7 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
         });
 
         //$('#historicoConsumo').setData().setupGrid();
-    }, 2000);
+    }, 5000);
 
     // BAR
     // ----------------------------------- 
@@ -133,7 +133,7 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
     }
 
     updateHistorico();
-    $interval(updateHistorico, 2000);
+    $interval(updateHistorico, 5000);
 
     $scope.caixaDaguaHistoricoOptions = {
         legend: {
