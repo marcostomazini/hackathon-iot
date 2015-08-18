@@ -116,16 +116,11 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
     };
     // SPLINE
     // ----------------------------------- 
-    $//scope.splineData = ChartData.load('server/chart/spline.json');
+    //$scope.splineData = ChartData.load('server/chart/spline.json');
     $scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
 
     function updateHistorico() {
-
-        $.getJSON("/api/sensor/caixa-historico", function (data) {
-            try {
-                    $scope.historicoDataset = data             
-            }
-            catch (ex) { }
+            $scope.historicoDataset = $scope.historico
         });
         //$scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
     }
