@@ -6,10 +6,68 @@
 angular.module('core').controller('AppController',
   ['$rootScope', '$scope', '$state', '$translate', '$window', '$localStorage', 
   '$timeout', '$location','toggleStateService', 'colors', 'browser', 'cfpLoadingBar', 
-  'Authentication', 'Empresas', 'Sensores', 
+  'Authentication', 'Empresas', 'Sensores','$interval',
   function($rootScope, $scope, $state, $translate, $window, $localStorage, 
-    $timeout, $location, toggle, colors, browser, cfpLoadingBar, Authentication, Empresas, Sensores) {
+    $timeout, $location, toggle, colors, browser, cfpLoadingBar, Authentication, Empresas, Sensores,$interval) {
     "use strict";
+
+
+$scope.caixa = [];
+var stopTime;
+$scope.fightTime = function() {
+  // Don't start a new fight if we are already fighting
+  if ( angular.isDefined(stopTime) ) return;
+
+  stopTime = $interval(function () {
+    $scope.stopFightTime();
+     $.getJSON("/api/sensor/caixa", function (data) {        
+            try {
+              $scope.caixa = data;
+               $.getJSON("/api/sensor/caixa-historico", function (data2) {                
+                  try {
+                    $scope.historico = data2 
+
+                    $.getJSON("/api/sensor/solo", function (data3) {
+                        try {
+                            $scope.fightTime();
+
+                            $scope.solo = data3
+                        }
+                        catch (ex) { }
+                    });
+
+                  }
+                  catch (ex) { }
+              });
+            }
+            catch (ex) { }
+        });
+  }, 10000); 
+};
+
+$scope.stopFightTime = function() {
+  if (angular.isDefined(stopTime)) {
+    $interval.cancel(stopTime);
+    stopTime = undefined;
+  }
+};
+$scope.fightTime();
+
+
+$.getJSON("/api/sensor/caixa", function (data) {        
+    try {
+      $scope.caixa = data;
+       $.getJSON("/api/sensor/caixa-historico", function (data2) {
+        $scope.fightTime();
+          try {
+            $scope.historico = data2             
+          }
+          catch (ex) { }
+      });
+    }
+    catch (ex) { }
+});
+
 
     // handles the callback from the received event
     var handleCallback = function (msg) {
