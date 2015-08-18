@@ -13,21 +13,17 @@ angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData'
   }, 800);
 
   $interval(function () {
-      try {
-          $.getJSON("/api/sensor/caixa", function (data) {
-              var v = parseInt($(".c1").text());
-              var d1 = parseInt(data[1].valor);
-              var d0 = parseInt(data[0].valor);
-              console.log(d1 + " - " + d0 + " = " + (d1 - d0));
-              console.log(v);
-              var gasto = d1 - d0;
-              if (gasto > 0) {
-                  $(".c1").text(v + gasto);
-              }
-          });
-      }
-      catch (ex) { }
-  }, 10000);
+    var data = $scope.caixa;    
+    var v = parseInt($(".c1").text());
+    var d1 = parseInt(data[1].valor);
+    var d0 = parseInt(data[0].valor);
+    console.log(d1 + " - " + d0 + " = " + (d1 - d0));
+    console.log(v);
+    var gasto = d1 - d0;
+    if (gasto > 0) {
+        $(".c1").text(v + gasto);
+    }
+  }, 5000);
 
   // BAR
   // ----------------------------------- 

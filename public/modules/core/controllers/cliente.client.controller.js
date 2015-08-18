@@ -1,19 +1,17 @@
 angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '$timeout', '$interval', function ($scope, ChartData, $timeout, $interval) {
     'use strict';
 
-    $interval(function () { 
-        $.getJSON("/api/sensor/caixa", function (data) {
-            try {
-                    var dado = data[0];
-                    var litros = parseInt(dado.valor);
-                    var pctg = Math.floor(litros / 2000 * 100);
-                    if (pctg > 100) pctg = 100;
-                    $('#water').text(litros.toString() + " litros");
-                    if (Math.abs(data[0].valor - data[10].valor) > 20)
-                        $('#water').toggleClass("animate").css({ height: pctg + "%" });                
-            }
-            catch (ex) { }
-        });
+    $interval(function () {         
+        var data = $scope.caixa;
+
+        var dado = data[0];
+        var litros = parseInt(dado.valor);
+        var pctg = Math.floor(litros / 2000 * 100);
+        if (pctg > 100) pctg = 100;
+        $('#water').text(litros.toString() + " litros");
+        if (Math.abs(data[0].valor - data[10].valor) > 20)
+            $('#water').toggleClass("animate").css({ height: pctg + "%" });                
+            
 
         //$('#historicoConsumo').setData().setupGrid();
     }, 5000);

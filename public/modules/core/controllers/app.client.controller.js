@@ -36,6 +36,20 @@ angular.module('core').controller('AppController',
     $scope.authentication = Authentication;
     $scope.authentication.empresas = Empresas.query();    
 
+
+  $scope.caixa = [];
+    $interval(function () { 
+        $.getJSON("/api/sensor/caixa", function (data) {
+            try {
+              $scope.caixa = data;
+            }
+            catch (ex) { }
+        });
+
+        //$('#historicoConsumo').setData().setupGrid();
+    }, 10000);
+
+
     // Loading bar transition
     // ----------------------------------- 
     var thBar;
