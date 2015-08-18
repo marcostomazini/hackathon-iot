@@ -3547,6 +3547,38 @@ angular.module('core').controller('AppController',
     $scope.authentication = Authentication;
     $scope.authentication.empresas = Empresas.query();    
 
+
+$scope.caixa = [];
+var stopTime;
+$scope.fightTime = function() {
+  // Don't start a new fight if we are already fighting
+  if ( angular.isDefined(stopTime) ) return;
+
+  stopTime = $interval(function () {
+    $scope.stopFightTime();
+     $.getJSON("/api/sensor/caixa", function (data) {        
+            try {
+              $scope.caixa = data;
+               $.getJSON("/api/sensor/caixa-historico", function (data2) {
+                $scope.fightTime();
+                  try {
+                    $scope.historico = data2             
+                  }
+                  catch (ex) { }
+              });
+            }
+            catch (ex) { }
+        });
+  }, 10000); 
+};
+
+$scope.stopFightTime = function() {
+  if (angular.isDefined(stopTime)) {
+    $interval.cancel(stopTime);
+    stopTime = undefined;
+  }
+};
+
     // Loading bar transition
     // ----------------------------------- 
     var thBar;
@@ -3698,19 +3730,17 @@ angular.module('core').controller('AppController',
 angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '$timeout', '$interval', function ($scope, ChartData, $timeout, $interval) {
     'use strict';
 
-    $interval(function () { 
-        $.getJSON("/api/sensor/caixa", function (data) {
-            try {
-                    var dado = data[0];
-                    var litros = parseInt(dado.valor);
-                    var pctg = Math.floor(litros / 2000 * 100);
-                    if (pctg > 100) pctg = 100;
-                    $('#water').text(litros.toString() + " litros");
-                    if (Math.abs(data[0].valor - data[10].valor) > 20)
-                        $('#water').toggleClass("animate").css({ height: pctg + "%" });                
-            }
-            catch (ex) { }
-        });
+    $interval(function () {         
+        var data = $scope.caixa;
+
+        var dado = data[0];
+        var litros = parseInt(dado.valor);
+        var pctg = Math.floor(litros / 2000 * 100);
+        if (pctg > 100) pctg = 100;
+        $('#water').text(litros.toString() + " litros");
+        if (Math.abs(data[0].valor - data[10].valor) > 20)
+            $('#water').toggleClass("animate").css({ height: pctg + "%" });                
+            
 
         //$('#historicoConsumo').setData().setupGrid();
     }, 5000);
@@ -3815,16 +3845,11 @@ angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '
     };
     // SPLINE
     // ----------------------------------- 
-    $//scope.splineData = ChartData.load('server/chart/spline.json');
+    //$scope.splineData = ChartData.load('server/chart/spline.json');
     $scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
 
     function updateHistorico() {
-
-        $.getJSON("/api/sensor/caixa-historico", function (data) {
-            try {
-                    $scope.historicoDataset = data             
-            }
-            catch (ex) { }
+            $scope.historicoDataset = $scope.historico
         });
         //$scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
     }
@@ -4113,24 +4138,20 @@ angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData'
           }
       }
       catch (ex) { }
-  }, 400);
+  }, 800);
 
   $interval(function () {
-      try {
-          $.getJSON("/api/sensor/caixa", function (data) {
-              var v = parseInt($(".c1").text());
-              var d1 = parseInt(data[1].valor);
-              var d0 = parseInt(data[0].valor);
-              console.log(d1 + " - " + d0 + " = " + (d1 - d0));
-              console.log(v);
-              var gasto = d1 - d0;
-              if (gasto > 0) {
-                  $(".c1").text(v + gasto);
-              }
-          });
-      }
-      catch (ex) { }
-  }, 2000);
+    var data = $scope.caixa;    
+    var v = parseInt($(".c1").text());
+    var d1 = parseInt(data[1].valor);
+    var d0 = parseInt(data[0].valor);
+    console.log(d1 + " - " + d0 + " = " + (d1 - d0));
+    console.log(v);
+    var gasto = d1 - d0;
+    if (gasto > 0) {
+        $(".c1").text(v + gasto);
+    }
+  }, 5000);
 
   // BAR
   // ----------------------------------- 
@@ -4560,7 +4581,7 @@ var t = false
         });
 
         //$('#historicoConsumo').setData().setupGrid();
-    }, 4000);
+    }, 5000);
 
   // BAR
   // ----------------------------------- 
