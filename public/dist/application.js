@@ -3517,10 +3517,68 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
 angular.module('core').controller('AppController',
   ['$rootScope', '$scope', '$state', '$translate', '$window', '$localStorage', 
   '$timeout', '$location','toggleStateService', 'colors', 'browser', 'cfpLoadingBar', 
-  'Authentication', 'Empresas', 'Sensores', 
+  'Authentication', 'Empresas', 'Sensores','$interval',
   function($rootScope, $scope, $state, $translate, $window, $localStorage, 
-    $timeout, $location, toggle, colors, browser, cfpLoadingBar, Authentication, Empresas, Sensores) {
+    $timeout, $location, toggle, colors, browser, cfpLoadingBar, Authentication, Empresas, Sensores,$interval) {
     "use strict";
+
+
+$scope.caixa = [];
+var stopTime;
+$scope.fightTime = function() {
+  // Don't start a new fight if we are already fighting
+  if ( angular.isDefined(stopTime) ) return;
+
+  stopTime = $interval(function () {
+    $scope.stopFightTime();
+     $.getJSON("/api/sensor/caixa", function (data) {        
+            try {
+              $scope.caixa = data;
+               $.getJSON("/api/sensor/caixa-historico", function (data2) {                
+                  try {
+                    $scope.historico = data2 
+
+                    $.getJSON("/api/sensor/solo", function (data3) {
+                        try {
+                            $scope.fightTime();
+
+                            $scope.solo = data3
+                        }
+                        catch (ex) { }
+                    });
+
+                  }
+                  catch (ex) { }
+              });
+            }
+            catch (ex) { }
+        });
+  }, 10000); 
+};
+
+$scope.stopFightTime = function() {
+  if (angular.isDefined(stopTime)) {
+    $interval.cancel(stopTime);
+    stopTime = undefined;
+  }
+};
+$scope.fightTime();
+
+
+$.getJSON("/api/sensor/caixa", function (data) {        
+    try {
+      $scope.caixa = data;
+       $.getJSON("/api/sensor/caixa-historico", function (data2) {
+        $scope.fightTime();
+          try {
+            $scope.historico = data2             
+          }
+          catch (ex) { }
+      });
+    }
+    catch (ex) { }
+});
+
 
     // handles the callback from the received event
     var handleCallback = function (msg) {
@@ -3698,36 +3756,6 @@ angular.module('core').controller('AppController',
 angular.module('core').controller('ClienteController', ['$scope', 'ChartData', '$timeout', '$interval', function ($scope, ChartData, $timeout, $interval) {
     'use strict';
 
-$scope.caixa = [];
-var stopTime;
-$scope.fightTime = function() {
-  // Don't start a new fight if we are already fighting
-  if ( angular.isDefined(stopTime) ) return;
-
-  stopTime = $interval(function () {
-    $scope.stopFightTime();
-     $.getJSON("/api/sensor/caixa", function (data) {        
-            try {
-              $scope.caixa = data;
-               $.getJSON("/api/sensor/caixa-historico", function (data2) {
-                $scope.fightTime();
-                  try {
-                    $scope.historico = data2             
-                  }
-                  catch (ex) { }
-              });
-            }
-            catch (ex) { }
-        });
-  }, 10000); 
-};
-
-$scope.stopFightTime = function() {
-  if (angular.isDefined(stopTime)) {
-    $interval.cancel(stopTime);
-    stopTime = undefined;
-  }
-};
 
     $interval(function () {         
         var data = $scope.caixa;
@@ -3848,8 +3876,7 @@ $scope.stopFightTime = function() {
     $scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
 
     function updateHistorico() {
-            $scope.historicoDataset = $scope.historico
-        });
+        $scope.historicoDataset = $scope.historico
         //$scope.historicoDataset = ChartData.load('api/sensor/caixa-historico');
     }
 
@@ -4127,37 +4154,6 @@ $scope.stopFightTime = function() {
 }]);
 angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData', '$timeout', '$interval', function ($scope, ChartData, $timeout,$interval) {
   'use strict';
-  
-  $scope.caixa = [];
-var stopTime;
-$scope.fightTime = function() {
-  // Don't start a new fight if we are already fighting
-  if ( angular.isDefined(stopTime) ) return;
-
-  stopTime = $interval(function () {
-    $scope.stopFightTime();
-     $.getJSON("/api/sensor/caixa", function (data) {        
-            try {
-              $scope.caixa = data;
-               $.getJSON("/api/sensor/caixa-historico", function (data2) {
-                $scope.fightTime();
-                  try {
-                    $scope.historico = data2             
-                  }
-                  catch (ex) { }
-              });
-            }
-            catch (ex) { }
-        });
-  }, 10000); 
-};
-
-$scope.stopFightTime = function() {
-  if (angular.isDefined(stopTime)) {
-    $interval.cancel(stopTime);
-    stopTime = undefined;
-  }
-};
 
   $interval(function () {
       try {
@@ -4172,6 +4168,7 @@ $scope.stopFightTime = function() {
 
   $interval(function () {
     var data = $scope.caixa;    
+
     var v = parseInt($(".c1").text());
     var d1 = parseInt(data[1].valor);
     var d0 = parseInt(data[0].valor);
@@ -4595,21 +4592,14 @@ angular.module('core').controller('PrefeituraController', ['$scope', 'ChartData'
 //   source.addEventListener('message', handleCallback, false);
 var t = false
  $interval(function () { 
-        $.getJSON("/api/sensor/solo", function (data) {
-            try {
-                  var dado = data[0];
-                  if (parseInt(dado.valor) > 1000 && t == false) {                      
-                    t = true;
-                    noty({
-                      text: 'Nascente com estado critico, pois o solo esta bastante seco',
-                      type: 'error'
-                    });
-                  }
-
-            }
-            catch (ex) { }
-        });
-
+        var dado = $scope.solo[0];
+        if (parseInt(dado.valor) > 1000 && t == false) {                      
+          t = true;
+          noty({
+            text: 'Nascente com estado critico, pois o solo esta bastante seco',
+            type: 'error'
+          });
+        }
         //$('#historicoConsumo').setData().setupGrid();
     }, 5000);
 

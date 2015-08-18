@@ -14,21 +14,14 @@ angular.module('core').controller('PrefeituraController', ['$scope', 'ChartData'
 //   source.addEventListener('message', handleCallback, false);
 var t = false
  $interval(function () { 
-        $.getJSON("/api/sensor/solo", function (data) {
-            try {
-                  var dado = data[0];
-                  if (parseInt(dado.valor) > 1000 && t == false) {                      
-                    t = true;
-                    noty({
-                      text: 'Nascente com estado critico, pois o solo esta bastante seco',
-                      type: 'error'
-                    });
-                  }
-
-            }
-            catch (ex) { }
-        });
-
+        var dado = $scope.solo[0];
+        if (parseInt(dado.valor) > 1000 && t == false) {                      
+          t = true;
+          noty({
+            text: 'Nascente com estado critico, pois o solo esta bastante seco',
+            type: 'error'
+          });
+        }
         //$('#historicoConsumo').setData().setupGrid();
     }, 5000);
 
