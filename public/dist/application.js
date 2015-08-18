@@ -3531,28 +3531,7 @@ $scope.fightTime = function() {
 
   stopTime = $interval(function () {
     $scope.stopFightTime();
-     $.getJSON("/api/sensor/caixa", function (data) {        
-            try {
-              $scope.caixa = data;
-               $.getJSON("/api/sensor/caixa-historico", function (data2) {                
-                  try {
-                    $scope.historico = data2 
-
-                    $.getJSON("/api/sensor/solo", function (data3) {
-                        try {
-                            $scope.fightTime();
-
-                            $scope.solo = data3
-                        }
-                        catch (ex) { }
-                    });
-
-                  }
-                  catch (ex) { }
-              });
-            }
-            catch (ex) { }
-        });
+    $scope.retornaDados();
   }, 10000); 
 };
 
@@ -3562,22 +3541,33 @@ $scope.stopFightTime = function() {
     stopTime = undefined;
   }
 };
-$scope.fightTime();
 
-
-$.getJSON("/api/sensor/caixa", function (data) {        
+$scope.retornaDados = function() {
+  $.getJSON("/api/sensor/caixa", function (data) {        
     try {
       $scope.caixa = data;
-       $.getJSON("/api/sensor/caixa-historico", function (data2) {
-        $scope.fightTime();
+       $.getJSON("/api/sensor/caixa-historico", function (data2) {                
           try {
-            $scope.historico = data2             
+            $scope.historico = data2 
+
+            $.getJSON("/api/sensor/solo", function (data3) {
+                try {
+                    //$scope.fightTime();
+
+                    $scope.solo = data3
+                }
+                catch (ex) { }
+            });
+
           }
           catch (ex) { }
       });
     }
     catch (ex) { }
-});
+  });
+};
+$scope.retornaDados();
+
 
 
     // handles the callback from the received event
@@ -3590,7 +3580,7 @@ $.getJSON("/api/sensor/caixa", function (data) {
           sensor = new Sensores({tipo: 'todos', valor: msg.data});
           // Redirect after save
            sensor.$save(function(response) {
-
+              $scope.fightTime();
            }, function(errorResponse) {
 
            });
