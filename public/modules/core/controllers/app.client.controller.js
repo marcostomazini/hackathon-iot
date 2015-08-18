@@ -34,39 +34,7 @@ angular.module('core').controller('AppController',
 
     // This provides Authentication context.
     $scope.authentication = Authentication;
-    $scope.authentication.empresas = Empresas.query();    
-
-
-$scope.caixa = [];
-var stopTime;
-$scope.fightTime = function() {
-  // Don't start a new fight if we are already fighting
-  if ( angular.isDefined(stopTime) ) return;
-
-  stopTime = $interval(function () {
-    $scope.stopFightTime();
-     $.getJSON("/api/sensor/caixa", function (data) {        
-            try {
-              $scope.caixa = data;
-               $.getJSON("/api/sensor/caixa-historico", function (data2) {
-                $scope.fightTime();
-                  try {
-                    $scope.historico = data2             
-                  }
-                  catch (ex) { }
-              });
-            }
-            catch (ex) { }
-        });
-  }, 10000); 
-};
-
-$scope.stopFightTime = function() {
-  if (angular.isDefined(stopTime)) {
-    $interval.cancel(stopTime);
-    stopTime = undefined;
-  }
-};
+    $scope.authentication.empresas = [];//Empresas.query();    
 
     // Loading bar transition
     // ----------------------------------- 
