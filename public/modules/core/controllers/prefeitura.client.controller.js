@@ -30,7 +30,7 @@ var t = false
         });
 
         //$('#historicoConsumo').setData().setupGrid();
-    }, 4000);
+    }, 5000);
 
   // BAR
   // ----------------------------------- 

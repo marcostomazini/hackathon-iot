@@ -10,7 +10,7 @@ angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData'
           }
       }
       catch (ex) { }
-  }, 400);
+  }, 800);
 
   $interval(function () {
       try {
@@ -27,7 +27,7 @@ angular.module('core').controller('ComunidadeController', ['$scope', 'ChartData'
           });
       }
       catch (ex) { }
-  }, 2000);
+  }, 10000);
 
   // BAR
   // ----------------------------------- 
