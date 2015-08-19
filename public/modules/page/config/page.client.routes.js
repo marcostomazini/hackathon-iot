@@ -6,8 +6,8 @@ angular.module('page').config(['$stateProvider',
     // Users state routing
     $stateProvider.
     state('page', {
-		url: '/page',
-		templateUrl: 'modules/page/views/page.client.view.html'
+      url: '/page',
+      templateUrl: 'modules/page/views/page.client.view.html'
     });
   }
 ]);

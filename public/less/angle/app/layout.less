@@ -63,7 +63,7 @@ html, body {
     
     top: 0; left: 0;
     bottom: 0;
-    z-index: @z-index-main-section - 1; // Hides behind the main section
+    z-index: @z-index-main-section + 5;
     // .transition(visibility 0s linear .3s);
     .backface-visibility(hidden);
     background-color: @aside-bg;
@@ -191,8 +191,6 @@ html, body {
   .wrapper {
     
     > .aside {
-      z-index: @z-index-main-section + 5;
-      
       .aside-inner {
         padding-top: @navbar-hg;
       }
@@ -406,12 +404,17 @@ html, body {
       }
     }
     > section {
-      margin-top: (@navbar-hg + 2.5) * 2;
+      margin-top: (@navbar-hg + 2) * 2;
       @media @tablet {
         margin-top: @navbar-hg;
       }
     }
   }
+}
+
+/* IE10+ hack: safari fix breaks ie so we need to target ie only to restore */
+_:-ms-lang(x), .layout-fixed .wrapper > .aside > .aside-inner {
+  position: static !important;
 }
 
 // Boxed layout (only for desktops)

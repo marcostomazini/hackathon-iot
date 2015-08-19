@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Empresas', 'Authentication',
-	function($scope, $http, $location, Users, Empresas, Authentication) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication',
+	function($scope, $http, $location, Users, Authentication) {
 		$scope.user = Authentication.user;
 
 		// If user is not signed in then redirect back home
-		if (!$scope.user) window.location = ('#!/page/signin');
+		if (!$scope.user) $location.path('/');
 
 		// Check if there are additional accounts 
 		$scope.hasConnectedAdditionalSocialAccounts = function(provider) {
@@ -38,42 +38,23 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			});
 		};
 
+		// Update a user profile
+		$scope.updateUserProfile = function(isValid) {
+			if (isValid) {
+				$scope.success = $scope.error = null;
+				var user = new Users($scope.user);
 
-		$scope.update = function() {
-			var user = new Users($scope.user);			
-
-			if (user.empresa) user.empresa = user.empresa._id;
-
-			user.$update(function(response) {
-				$scope.user = Authentication.user = response;
-
-				noty({
-				    text: 'Atualizado com sucesso',
-				    type: 'success'
+				user.$update(function(response) {
+					$scope.success = true;
+					Authentication.user = response;
+				}, function(response) {
+					$scope.error = response.data.message;
 				});
-
-			}, function(response) {
-				$scope.error = response.data.message;
-			});
-		};
-
-		$scope.submitted = false;
-		$scope.validateInput = function(name, type) {
-			var input = $scope.formValidate[name];
-			return (input.$dirty || $scope.submitted) && input.$error[type];
-		};
-
-		// Submit form
-		$scope.submitForm = function() {
-			$scope.submitted = true;
-			if ($scope.formValidate.$valid) {
-			  $scope.update();
 			} else {
-			  console.log('Not valid!!');
-			  return false;
+				$scope.submitted = true;
 			}
 		};
-		
+
 		// Change user password
 		$scope.changeUserPassword = function() {
 			$scope.success = $scope.error = null;
@@ -86,5 +67,5 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 				$scope.error = response.message;
 			});
 		};
-
-}]);
+	}
+]);

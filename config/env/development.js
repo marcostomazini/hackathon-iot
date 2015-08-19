@@ -1,21 +1,34 @@
 'use strict';
 
 module.exports = {
-	//db: 'mongodb://arquitetaweb:arqw3b@ds043082.mongolab.com:43082/heroku_app37384508',
-	//db: 'mongodb://192.168.10.103/iot',
 	db: 'mongodb://localhost/iot',
 	app: {
-		title: 'Sensorizacao - Development Environment'
+		title: 'H2Okay - Development Environment'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || '907569132639066',
-		clientSecret: process.env.FACEBOOK_SECRET || '2b239864494257d74bba60509ad7047e',
+		clientID: process.env.FACEBOOK_ID || 'APP_ID',
+		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
 		callbackURL: '/auth/facebook/callback'
 	},
+	twitter: {
+		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
+		clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+		callbackURL: '/auth/twitter/callback'
+	},
 	google: {
-		clientID: process.env.GOOGLE_ID || '64358772177-lqtq513bcp3kuve4rqn91gvqdrrbefel.apps.googleusercontent.com',
-		clientSecret: process.env.GOOGLE_SECRET || 'LWyL8-_RDOsyfm9BeMOI3BDj',
+		clientID: process.env.GOOGLE_ID || 'APP_ID',
+		clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
 		callbackURL: '/auth/google/callback'
+	},
+	linkedin: {
+		clientID: process.env.LINKEDIN_ID || 'APP_ID',
+		clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
+		callbackURL: '/auth/linkedin/callback'
+	},
+	github: {
+		clientID: process.env.GITHUB_ID || 'APP_ID',
+		clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
+		callbackURL: '/auth/github/callback'
 	},
 	mailer: {
 		from: process.env.MAILER_FROM || 'MAILER_FROM',

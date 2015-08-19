@@ -8,15 +8,31 @@
   background-color: @background;
   border-color: @border;
 
-  &:hover,
   &:focus,
-  &.focus,
+  &.focus {
+    color: @color;
+    background-color: darken(@background, 4%);
+        border-color: darken(@border, 8%);
+  }
+  &:hover {
+    color: @color;
+    background-color: darken(@background, 4%);
+        border-color: darken(@border, 8%);
+  }
   &:active,
   &.active,
   .open > .dropdown-toggle& {
     color: @color;
     background-color: darken(@background, 4%);
         border-color: darken(@border, 8%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @color;
+      background-color: darken(@background, 4%);
+          border-color: darken(@border, 8%);
+    }
   }
   &:active,
   &.active,

@@ -56,7 +56,7 @@ exports.forgot = function(req, res, next) {
 		},
 		function(token, user, done) {
 			res.render('templates/reset-password-email', {
-				name: user.name,
+				name: user.displayName,
 				appName: config.app.title,
 				url: 'http://' + req.headers.host + '/auth/reset/' + token
 			}, function(err, emailHTML) {
@@ -159,7 +159,7 @@ exports.reset = function(req, res, next) {
 		},
 		function(user, done) {
 			res.render('templates/reset-password-confirm-email', {
-				name: user.name,
+				name: user.displayName,
 				appName: config.app.title
 			}, function(err, emailHTML) {
 				done(err, emailHTML, user);
@@ -238,7 +238,7 @@ exports.changePassword = function(req, res) {
 			});
 		}
 	} else {
-		res.status(401).send({
+		res.status(400).send({
 			message: 'User is not signed in'
 		});
 	}

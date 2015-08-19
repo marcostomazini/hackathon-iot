@@ -1,9 +1,0 @@
-{
-	"folders":
-	[
-		{
-			"path": "/home/tomazini/Projetos/NodeJs/acomanda-api-ui",
-			"folder_exclude_patterns": ["node_modules", "public/lib", "themes", "public/dist"]
-		}
-	]
-}

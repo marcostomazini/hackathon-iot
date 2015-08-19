@@ -295,3 +295,27 @@
 .input-md {
   width: 260px;
 }
+
+
+.note-editor {
+  background-image: -webkit-linear-gradient(#eee .1em, transparent .1em);
+  background-image: linear-gradient(#eee .1em, transparent .1em);
+  
+  background-size: 100% 20px;
+  background-color: #fff; 
+
+  line-height: 20px;
+  margin-top: 5px;
+  padding: 0;
+  padding-bottom: 1px;
+  border: none;
+  @margin-color: @brand-warning;
+  &.note-editor-margin {
+    background-image: 
+      -webkit-linear-gradient(0deg, transparent 49px, lighten(@margin-color, 30%) 49px, lighten(@margin-color, 30%) 51px, transparent 51px), -webkit-linear-gradient(#eee .1em, transparent .1em);
+    background-image: 
+      linear-gradient(90deg, transparent 49px, lighten(@margin-color, 30%) 49px, lighten(@margin-color, 30%) 51px, transparent 51px),
+      linear-gradient(#eee .1em, transparent .1em);
+    padding-left: 55px;
+  }
+}

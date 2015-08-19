@@ -1,83 +1,34 @@
-<h3>Perfil
-   <small>editando seu perfil</small>   
-</h3>
-
-<div ng-controller="SettingsController" class="container-fluid" ng-init="findOne()">
-   <div class="row">
-      <div class="col-md-12">
-         <form name="formValidate" ng-submit="submitForm()" novalidate="" class="form-validate form-horizontal ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-pattern ng-valid-url ng-invalid-validator ng-valid-minlength ng-valid-maxlength ng-valid-blacklist ng-valid-date ng-valid-date-disabled ng-valid-time">
-            <!-- START panel-->
-            <div class="panel panel-default">
-               <div class="panel-body">
-                  <fieldset class="b0">
-                     <legend>
-                        {{ 'geral.BASIC' | translate:{ appName: app.name } }}
-                     </legend>
-                  </fieldset>
-
-                  <fieldset>
-                     <div class="form-group">
-                        <label class="col-sm-2 control-label">
-                           {{ 'geral.FIRST_NAME' | translate:{ appName: app.name } }}
-                        </label>
-                        <div class="col-sm-6">
-                           <input type="text" name="firstName" required ng-model="user.name" class="form-control ng-dirty ng-touched ng-invalid ng-invalid-required">                           
-                        </div>
-                     </div>
-                  </fieldset>
-
-   				<fieldset>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">
-						   {{ 'geral.EMAIL' | translate:{ appName: app.name } }}
-						</label>
-						<div class="col-sm-6">
-						   <input type="text" name="email" disabled required ng-model="user.email" class="form-control ng-dirty ng-touched ng-invalid ng-invalid-required">
-						</div>
-					</div>
-                  </fieldset>
-
-				<!-- fieldset>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">
-							{{ 'geral.USERNAME' | translate:{ appName: app.name } }}
-						</label>
-						<div class="col-sm-6">
-							<input type="text" name="username"  required ng-model="user.username" class="form-control ng-dirty ng-touched ng-invalid ng-invalid-required">
-						</div>
-					</div>
-				</fieldset> 
-
-				<fieldset>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">
-							{{ 'geral.ENTERPRISE_DEFAULT' | translate:{ appName: app.name } }}
-						</label>						
-						<div class="col-sm-6">                       		
-                 		<select class="form-control ng-dirty ng-touched ng-invalid"
-                       		  ng-model="user.empresa" 
-                       		  ng-options="empresa._id as empresa.name for empresa in empresas track by empresa._id">
-						      <option value=""></option>
-							</select>
-                  </div>                        
-					</div>
-					<pre>{{user|json}}</pre>
-				</fieldset> -->
-
-            <div class="panel-footer text-center">                  
-               <div class="text-right mt-lg">
-                  <button type="button" class="btn btn-warning">
-                     {{ 'button.DISCARD' | translate:{ appName: app.name } }}
-                  </button>
-                  <button type="submit" class="btn btn-success">
-                     {{ 'button.SAVE' | translate:{ appName: app.name } }}
-                  </button>
-               </div>
-            </div>
-            <!-- END panel-->
-         </form>
-
-      </div>
-   </div>
-   <!-- END row-->
-</div>
+<section class="row" data-ng-controller="SettingsController">
+	<h3 class="col-md-12 text-center">Edit your profile</h3>
+	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
+		<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
+			<fieldset>
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name">
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name">
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
+				</div>
+				<div class="text-center form-group mt">
+					<button type="submit" class="btn btn-large btn-primary">Save Profile</button>
+				</div>
+				<div data-ng-show="success" class="text-center text-success">
+					<strong>Profile Saved Successfully</strong>
+				</div>
+				<div data-ng-show="error" class="text-center text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>

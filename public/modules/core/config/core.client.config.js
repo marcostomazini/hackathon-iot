@@ -1,47 +1,23 @@
-'use strict';
+(function() {
+    'use strict';
 
-// Configuring the Core module
-angular.module('core').run(['Menus',
-  function(Menus) {
-    // Add default menu entry
-    Menus.addMenuItem('sidebar', 'Inicio', 'dash', null, '/dash', false, null, null, 'icon-home');
-  }
-]).config(['$ocLazyLoadProvider', 'APP_REQUIRES', function ($ocLazyLoadProvider, APP_REQUIRES) {
-    // Lazy Load modules configuration
-    $ocLazyLoadProvider.config({
-      debug: false,
-      events: true,
-      modules: APP_REQUIRES.modules
-    });
-  }
-]).config(['$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
-    function ( $controllerProvider, $compileProvider, $filterProvider, $provide) {
-    // registering components after bootstrap
-    angular.module('core').controller = $controllerProvider.register;
-    angular.module('core').directive  = $compileProvider.directive;
-    angular.module('core').filter     = $filterProvider.register;
-    angular.module('core').factory    = $provide.factory;
-    angular.module('core').service    = $provide.service;
-    angular.module('core').constant   = $provide.constant;
-    angular.module('core').value      = $provide.value;
+    angular
+        .module('app.core')
+        .config(coreConfig);
 
-  }
-]).config(['$translateProvider', function ($translateProvider) {
-    $translateProvider.useStaticFilesLoader({
-      prefix : 'modules/core/i18n/',
-      suffix : '.json'
-    });
-    $translateProvider.preferredLanguage('pt_br');
-    $translateProvider.useLocalStorage();
-  }
-])
-.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
-    cfpLoadingBarProvider.includeBar = true;
-    cfpLoadingBarProvider.includeSpinner = true;
-    cfpLoadingBarProvider.latencyThreshold = 500;
-    cfpLoadingBarProvider.parentSelector = '.wrapper > section';
-  }
-]).config(['$tooltipProvider', function ($tooltipProvider) {
-    $tooltipProvider.options({appendToBody: true});
-  }
-]);
+    coreConfig.$inject = ['$controllerProvider', '$compileProvider', '$filterProvider', '$provide'];
+    function coreConfig($controllerProvider, $compileProvider, $filterProvider, $provide){
+      
+      var core = angular.module('app.core');
+      // registering components after bootstrap
+      core.controller = $controllerProvider.register;
+      core.directive  = $compileProvider.directive;
+      core.filter     = $filterProvider.register;
+      core.factory    = $provide.factory;
+      core.service    = $provide.service;
+      core.constant   = $provide.constant;
+      core.value      = $provide.value;
+
+    }
+
+})();

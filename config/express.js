@@ -21,8 +21,7 @@ var fs = require('fs'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path'),
-	request = require("request");
+	path = require('path');
 
 module.exports = function(db) {
 	// Initialize express app
@@ -91,9 +90,6 @@ module.exports = function(db) {
 		saveUninitialized: true,
 		resave: true,
 		secret: config.sessionSecret,
-		cookie: {
-    		expires : new Date(Date.now() + 3600000), //1 Hour
-    	},
 		store: new mongoStore({
 			db: db.connection.db,
 			collection: config.sessionCollection

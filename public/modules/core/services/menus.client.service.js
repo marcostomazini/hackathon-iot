@@ -1,7 +1,7 @@
 'use strict';
 
 //Menu service used for managing  menus
-angular.module('core').service('Menus', [
+angular.module('app.core').service('Menus', [
 
 	function() {
 		// Define a set of default roles
@@ -79,7 +79,6 @@ angular.module('core').service('Menus', [
 		};
 
 		// Add menu item object
-        //this.addMenuItem = function(menuId, menuItemTitle, menuItemURL, menuItemType, level, parentMenuItemURL, menuItemUIRoute, isPublic, roles, position,
 		this.addMenuItem = function(menuId, menuItemTitle, menuItemURL, menuItemType, menuItemUIRoute, isPublic, roles, position,
 																iconClass, translateKey, alert) {
 			// Validate that the menu exists

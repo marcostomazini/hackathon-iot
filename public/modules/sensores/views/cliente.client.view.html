@@ -1,0 +1,122 @@
+<style type="text/css">
+    .caixa-dagua {
+        padding: 0;
+        border: black solid 6px;
+        border-top: none;
+        border-radius: 8px;
+    }
+
+    .panel-heading {
+        font-weight: bold;
+        color: black;
+    }
+
+    #container {
+    background: rgba( 0, 0, 0, 0.10);
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+    border-left: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    border-top: 1px solid #ccc;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+}
+#glass {
+    background: rgba( 255, 255, 255, 0.50);
+    border: 1px solid #bbb;
+    border-top: 1px solid #eee;  
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+#water {
+    background-image: url("themes/waves.png");   
+    background-position: top right;
+    background-size: 300px 400px;
+    position: absolute;
+    bottom: 0;
+    padding-bottom:20px;
+    width: 100%;
+    height: 100px;
+    -webkit-transition: all 3s ease-out;
+    -moz-transition: all 3s ease-out;
+    -o-transition: all 3s ease-out;
+    transition: all 3s ease-out;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    
+    font-weight: bold;
+    font-size: 50px;
+    text-align:center;
+}
+#water.animate{
+    background-size: 250px 400px;
+    background-position: top left;
+    -webkit-transition: all 3s ease-out;
+    -moz-transition: all 3s ease-out;
+    -o-transition: all 3s ease-out;
+    transition: all 3s ease-out;
+}
+
+#glass:hover #water {
+    height: 350px;
+   
+}
+
+</style>
+
+<div ng-controller="ClienteController">
+    <div class="row">
+        <div id="" class="panel panel-default col-sm-offset-3 col-md-offset-2 col-lg-offset-2
+                 col-sm-8 col-md-8 col-lg-8">
+            <div class="panel-heading">
+                <div class="panel-title">Sua Caixa D'Água</div>
+            </div>
+            <div collapse="panelChart3" class="panel-wrapper">
+                <div id="container">
+                    <div id="glass">
+                        <div id="water" class="center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- START bar chart-->
+        
+        <div id="" class="panel panel-default col-sm-offset-3 col-md-offset-2 col-lg-offset-2
+                 col-sm-8 col-md-8 col-lg-8">
+            <div class="panel-heading">
+                <div class="panel-title">Historico de Consumo</div>
+            </div>
+            <div collapse="panelChart9" class="panel-wrapper">
+                <div class="panel-body">
+                    <flot dataset="historicoDataset" id="plotHistorico" options="caixaDaguaHistoricoOptions" height="300px"></flot>
+                    <!-- <flot src="'/api/sensor/caixa-historico'" id="plotHistorico" options="caixaDaguaHistoricoOptions" height="300px"></flot> -->
+                    <!-- <flot src="'/server/chart/caixaDaguaHistorico.json'" options="caixaDaguaHistoricoOptions" height="300px"></flot> -->
+                </div>
+            </div>
+        </div>
+        <!-- END bar chart-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    //you don't need this, just used for changing background
+    jQuery(function ($) {
+
+        $("#publish").click(function () {
+            $.post("/api/stream")
+        })
+        
+    });
+</script>

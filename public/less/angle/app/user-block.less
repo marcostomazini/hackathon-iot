@@ -7,11 +7,12 @@
   display: block;
   overflow: hidden;
   border: 0 !important;
+  width: 100% !important;
 }
 
 .user-block {
   position: relative;
-  padding: 25px 30px 0;
+  padding: 25px 0 10px;
   cursor: pointer;
   .clearfix;
   
@@ -28,6 +29,7 @@
   .user-block-info {
     padding-top: 15px;
     text-align: center;
+    white-space: nowrap;
     .user-block-name,
     .user-block-role {
       display: block;
@@ -58,7 +60,7 @@
 .aside-collapsed {
 
   .user-block {
-    padding: 25px 0 0;
+    padding: 15px 0 14px;
     margin: 0;
     text-align: center;
 
@@ -70,9 +72,7 @@
         display: block;
       }
     }
-    .user-block-role,
-    .user-block-status,
-    .user-block-name {
+    .user-block-info {
       display: none;
     }
   }

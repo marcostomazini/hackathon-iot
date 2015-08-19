@@ -141,3 +141,27 @@
 }
 
 
+// Button Circle
+// ----------------------------------- 
+
+.btn-circle {
+  @sz: 35px;
+  width: @sz;
+  height: @sz;
+  text-align: center;
+  font-size: 12px;
+  line-height: @sz;
+  border-radius: 500px;
+  padding: 0;
+  border: 0;
+  > * {
+    line-height: inherit !important;
+  }
+  &.btn-lg {
+    @sz-lg: 50px;
+    width: @sz-lg;
+    height: @sz-lg;
+    font-size: 18px;
+    line-height: @sz-lg;
+  }
+}

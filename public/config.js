@@ -3,9 +3,22 @@
 // Init the application configuration module for AngularJS application
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
-	var applicationModuleName = 'acomandaApp';
-	// var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils'];
-	var applicationModuleVendorDependencies = ['ngRoute', 'ngAnimate', 'ngStorage','ngTouch', 'ngCookies', 'pascalprecht.translate', 'ui.bootstrap', 'ui.router', 'oc.lazyLoad', 'cfp.loadingBar', 'ngSanitize', 'ngResource', 'ui.utils'];
+	var applicationModuleName = 'angleApp';
+
+	var applicationModuleVendorDependencies = ['ngRoute',
+																						 'ngAnimate',
+																						 'ngStorage',
+																						 'ngTouch',
+																						 'ngCookies',
+																						 'pascalprecht.translate',
+																						 'ui.bootstrap',
+																						 'ui.router',
+																						 'oc.lazyLoad',
+																						 'cfp.loadingBar',
+																						 'ngSanitize',
+																						 'ngResource',
+																						 'ui.utils'
+																						];
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
 		// Create angular module

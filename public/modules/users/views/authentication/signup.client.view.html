@@ -1,81 +1,20 @@
-<div ng-controller="AuthenticationController" class="block-center mt-xl wd-xl">
-   <!-- START panel-->
-   <div class="panel panel-dark panel-flat">
-      <div class="panel-heading text-center">
-         <a href="#">
-            <img src="modules/core/img/brand/logo.png" alt="Image" class="block-center img-rounded" />
-         </a>
-      </div>
-      <div class="panel-body">
-		 <form name="registerForm" data-ng-submit="signup()" class="form-validate mb-lg" novalidate autocomplete="off">
-
-		 	<div class="form-group has-feedback">
-               <label class="text-muted">Nome Completo</label>
-               <input type="name" name="name" placeholder="Nome Completo" autocomplete="off" ng-model="credentials.name" required="" class="form-control" />
-               <span class="fa fa-user form-control-feedback text-muted"></span>
-               <span ng-show="registerForm.name.$dirty &amp;&amp; registerForm.name.$error.required" class="text-danger">Campo obrigatório</span>
-            </div>
-
-            <div class="form-group has-feedback">
-               <label class="text-muted">Email</label>
-               <input type="email" name="account_email" placeholder="Email" autocomplete="off" ng-model="credentials.email" required="" class="form-control" />
-               <span class="fa fa-envelope form-control-feedback text-muted"></span>
-               <span ng-show="registerForm.account_email.$dirty &amp;&amp; registerForm.account_email.$error.required" class="text-danger">Campo obrigatório</span>
-               <span ng-show="registerForm.account_email.$dirty &amp;&amp; registerForm.account_email.$error.email" class="text-danger">Email inválido</span>
-            </div>
-
-            <div class="form-group has-feedback">
-               <label class="text-muted">Senha</label>
-               <input id="id-password" type="password" placeholder="Senha" name="account_password" ng-model="credentials.password" ng-pattern="/^[a-zA-Z0-9]{6,10}$/" required="" class="form-control" />
-               <span class="fa fa-lock form-control-feedback text-muted"></span>
-               <span ng-show="registerForm.account_password.$dirty &amp;&amp; registerForm.account_password.$error.required" class="text-danger">Campo obrigatório</span>
-               <span ng-show="registerForm.account_password.$dirty &amp;&amp; registerForm.account_password.$error.pattern" class="text-danger">Senha deve conter 'a-zA-Z0-9' e 6-10 caracteres</span>
-            </div>
-
-            <div class="form-group has-feedback">
-               <label class="text-muted">Confirme Sua Senha</label>
-               <input type="password" name="account_password_confirm" placeholder="Redigite a Senha" ng-model="credentials.account_password_confirm" ui-validate="'$value==credentials.password'" ui-validate-watch="'password'" class="form-control" />
-               <span class="fa fa-lock form-control-feedback text-muted"></span>
-               <span ng-show="registerForm.account_password_confirm.$dirty &amp;&amp; registerForm.account_password_confirm.$error.validator" class="text-danger">Senha não confere</span>
-            </div>
-
-            <div class="clearfix">
-               <div class="checkbox c-checkbox pull-left mt0">
-                  <label>
-                     <input type="checkbox" required name="account_agreed" ng-model="credentials.agreed" />
-                     <span class="fa fa-check"></span>Eu concordo com os <a href="#">termos</a>
-                  </label>
-               </div>
-            </div>
-            <div ng-show="registerForm.account_agreed.$dirty &amp;&amp; registerForm.account_agreed.$error.required" class="text-danger">Você precisa aceitar os termos</div>
-            <button type="submit" class="btn btn-block btn-primary mt-lg">Crie Minha Conta</button>
-         </form>
-         <div ng-show="authMsg" class="alert alert-danger text-center">{{authMsg}}</div>
-         <p class="pt-lg text-center">Já tenho cadastro?</p><a ui-sref="page.signin" class="btn btn-block btn-default">Entrar</a>
-      </div>
-   </div>
-   <!-- END panel-->
-   <div class="p-lg text-center">
-      <span>&copy;</span>
-      <span ng-bind="app.year"></span>
-      <span>-</span>
-      <span ng-bind="app.name"></span>
-      <br/>
-      <span ng-bind="app.description"></span>
-   </div>
-</div>
-
-<!-- 
-
-
 <section class="row" data-ng-controller="AuthenticationController">
 	<h3 class="col-md-12 text-center">Sign up using your social accounts</h3>
 	<div class="col-md-12 text-center">
 		<a href="/auth/facebook" class="undecorated-link">
 			<img src="/modules/users/img/buttons/facebook.png">
 		</a>
+		<a href="/auth/twitter" class="undecorated-link">
+			<img src="/modules/users/img/buttons/twitter.png">
+		</a>
 		<a href="/auth/google" class="undecorated-link">
 			<img src="/modules/users/img/buttons/google.png">
+		</a>
+		<a href="/auth/linkedin" class="undecorated-link">
+			<img src="/modules/users/img/buttons/linkedin.png">
+		</a>
+		<a href="/auth/github" class="undecorated-link">
+			<img src="/modules/users/img/buttons/github.png">
 		</a>
 	</div>
 	<h3 class="col-md-12 text-center">Or with your email</h3>
@@ -112,4 +51,4 @@
 			</fieldset>
 		</form>
 	</div>
-</section> -->
+</section>

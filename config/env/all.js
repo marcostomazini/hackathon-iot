@@ -8,8 +8,8 @@ module.exports = {
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
-	sessionSecret: 'ACOMANDA-KEY',
-	sessionCollection: 'sessoes',
+	sessionSecret: 'H2Okay',
+	sessionCollection: 'sessions',
 	assets: {
 		lib: {
 			css: [
@@ -36,10 +36,8 @@ module.exports = {
 				'public/lib/oclazyload/dist/ocLazyLoad.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-loading-bar/build/loading-bar.js',
-				'public/lib/noty/js/noty/packaged/jquery.noty.packaged.js',
-				'public/lib/underscore/underscore.js',
-				 //'public/lib/datatables/media/jquery.dataTables.js',
-				 //'public/lib/angular-datatables/dist/angular-datatables.js'
+				'public/lib/jquery.browser/dist/jquery.browser.js',
+				'public/lib/underscore/underscore.js'
 				// 'public/lib/jquery/dist/jquery.js',
 				// 'public/lib/angular/angular.js',
 				// 'public/lib/angular-resource/angular-resource.js',
@@ -59,20 +57,7 @@ module.exports = {
 		js: [
 			'public/config.js',
 			'public/application.js',
-			
-			// new subroute
-			'public/modules/cadastros/*[!config]*/*.js',
-			'public/modules/cadastros/*[!config]*/*[!tests]*/*.js',
-
-			// new module
-			'public/modules/financeiro/*[!config]*/*.js',
-			'public/modules/financeiro/*[!config]*/*[!tests]*/*.js',
-
-			// new module
-			'public/modules/produto/*[!config]*/*.js',
-			'public/modules/produto/*[!config]*/*[!tests]*/*.js',
-
-			'public/modules/*/*.js',			
+			'public/modules/*/*.js',
 			'public/modules/*/*[!tests]*/*.js'
 		],
 		tests: [

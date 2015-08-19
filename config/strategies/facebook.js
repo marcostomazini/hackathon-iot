@@ -25,18 +25,16 @@ module.exports = function() {
 
 			// Create the user OAuth profile
 			var providerUserProfile = {
-				name: profile.name.givenName + ' ' + 
-					profile.name.familyName,
+				firstName: profile.name.givenName,
+				lastName: profile.name.familyName,
+				displayName: profile.displayName,
 				email: profile.emails[0].value,
 				username: profile.username,
 				provider: 'facebook',
 				providerIdentifierField: 'id',
-				providerData: providerData,
-				picture: 'http://graph.facebook.com/'+ providerData.id +'/picture'
-			};			
+				providerData: providerData
+			};
 
-			console.log(providerUserProfile);
-			
 			// Save the user OAuth profile
 			users.saveOAuthUserProfile(req, providerUserProfile, done);
 		}

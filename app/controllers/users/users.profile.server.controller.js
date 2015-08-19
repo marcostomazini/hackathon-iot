@@ -22,11 +22,10 @@ exports.update = function(req, res) {
 
 	if (user) {
 		// Merge existing user
-
 		user = _.extend(user, req.body);
-
 		user.updated = Date.now();
-	
+		user.displayName = user.firstName + ' ' + user.lastName;
+
 		user.save(function(err) {
 			if (err) {
 				return res.status(400).send({
@@ -37,19 +36,13 @@ exports.update = function(req, res) {
 					if (err) {
 						res.status(400).send(err);
 					} else {
-						User.findById(user._id).populate('empresa', 'name').exec(function(err, userRetorno) {
-							if (err) return next(err);
-							if (!userRetorno) return next(new Error('Failed to load user '));
-							user = _.extend(user, userRetorno);
-
-							res.json(user);
-						});
+						res.json(user);
 					}
 				});
 			}
 		});
 	} else {
-		res.status(401).send({
+		res.status(400).send({
 			message: 'User is not signed in'
 		});
 	}
@@ -58,6 +51,6 @@ exports.update = function(req, res) {
 /**
  * Send User
  */
-exports.me = function(req, res) {	
+exports.me = function(req, res) {
 	res.json(req.user || null);
 };

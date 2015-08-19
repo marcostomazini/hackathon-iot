@@ -25,10 +25,7 @@
   height: 100%;
   padding-bottom: 20px;
   background-color: @sidebar-bg; 
-  
-  margin-right: -@scrollbar-wd;  // hides the scrollbar
   overflow-x: hidden;
-  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   
   // draw a divider for the sidebar
@@ -57,7 +54,6 @@
   // First main level
   > .nav {
     position: relative;
-    padding-right: @scrollbar-wd;
 
     // Only the first item in sidebar
     > .nav-heading:first-child {
@@ -112,8 +108,16 @@
     }
     .label {
       display: block;
-      margin-right: 20px;
     }
+  }
+}
+
+// Hides the scrollbar only on desktops
+@tablet-landscape: ~"only screen and (min-width: 1025px)";
+@media @tablet-landscape {
+  .sidebar {
+    margin-right: -@scrollbar-wd;
+    overflow-y: scroll;
   }
 }
 
@@ -200,7 +204,7 @@
 @media @tablet {
   
   .sidebar > .nav {
-    padding-right: 0;
+
     .label {
       margin: 2px 0 0 0;
     }

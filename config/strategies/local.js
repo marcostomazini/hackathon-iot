@@ -22,19 +22,17 @@ module.exports = function() {
 				}
 				if (!user) {
 					return done(null, false, {
-						message: 'Usuário ou senha incorreta',
-						type: 'error'
+						message: 'Unknown user or invalid password'
 					});
 				}
 				if (!user.authenticate(password)) {
 					return done(null, false, {
-						message: 'Usuário ou senha incorreta',
-						type: 'warning'
+						message: 'Unknown user or invalid password'
 					});
 				}
 
 				return done(null, user);
-			}).populate('empresa', 'name');
+			});
 		}
 	));
 };

@@ -174,7 +174,7 @@
 .text-gray          { color: @gray; }
 .text-gray-light    { color: @gray-light; }
 .text-gray-lighter  { color: @gray-lighter; }
-
+.text-inherit       { color: inherit; }
 // Text sizing
 
 .text-sm { font-size: @text-sm; }
@@ -214,6 +214,8 @@
 .bg-gray         { .make-bg(@gray, @text-color); }
 .bg-gray-light   { .make-bg(@gray-light, @text-color); }
 .bg-gray-lighter { .make-bg(@gray-lighter, @text-color); }
+
+.bg-transparent  { background-color: transparent !important; }
 
 .bgcolor-variant(@bgcolor, @text-color: #fff) {
   @amountOfLight: 10%;

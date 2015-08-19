@@ -13,19 +13,22 @@ var _ = require('lodash'),
  * Signup
  */
 exports.signup = function(req, res) {
+	// For security measurement we remove the roles from the req.body object
+	delete req.body.roles;
+
 	// Init Variables
 	var user = new User(req.body);
 	var message = null;
 
 	// Add missing user fields
 	user.provider = 'local';
+	user.displayName = user.firstName + ' ' + user.lastName;
 
 	// Then save the user 
 	user.save(function(err) {
 		if (err) {
 			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err),
-				type: 'error'
+				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
 			// Remove sensitive data before login
@@ -33,11 +36,8 @@ exports.signup = function(req, res) {
 			user.salt = undefined;
 
 			req.login(user, function(err) {
-				if (err) {					
-					res.status(400).send({
-						message: err,
-						type: 'error'
-					});
+				if (err) {
+					res.status(400).send(err);
 				} else {
 					res.json(user);
 				}
@@ -129,12 +129,13 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 
 					User.findUniqueUsername(possibleUsername, null, function(availableUsername) {
 						user = new User({
-							name: providerUserProfile.name,
-							username: providerUserProfile.email,
+							firstName: providerUserProfile.firstName,
+							lastName: providerUserProfile.lastName,
+							username: availableUsername,
+							displayName: providerUserProfile.displayName,
 							email: providerUserProfile.email,
 							provider: providerUserProfile.provider,
-							providerData: providerUserProfile.providerData,
-							picture: providerUserProfile.picture
+							providerData: providerUserProfile.providerData
 						});
 
 						// And save the user

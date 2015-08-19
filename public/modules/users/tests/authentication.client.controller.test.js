@@ -61,8 +61,7 @@
 		it('$scope.signin() should fail to log in with nothing', function() {
 			// Test expected POST request
 			$httpBackend.expectPOST('/auth/signin').respond(400, {
-				'message': 'Dados incorretos de login',
-				'type': 'error'
+				'message': 'Missing credentials'
 			});
 
 			scope.signin();

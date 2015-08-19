@@ -5,16 +5,8 @@ module.exports = function(grunt) {
 	var watchFiles = {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
-		clientViews: [
-		'public/modules/**/views/**/*.html',
-		'public/modules/cadastros/**/views/**/*.html'
-		],
-		clientJS: [
-		'public/js/*.js', 
-		'public/modules/**/*.js',
-		'public/modules/cadastros/*[!config]*/*.js',
-		'public/modules/financeiro/*[!config]*/*.js'
-		],
+		clientViews: ['public/modules/**/views/**/*.html'],
+		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
 		// clientCSS: ['public/modules/**/*.css'],
 		clientCSS: ['public/dist/application.min.css', 'public/modules/**/*.css'],
 		clientLESS:  ['public/less/**/*.less', 'public/modules/**/*.less'],
@@ -151,6 +143,7 @@ module.exports = function(grunt) {
 			production: {
 				files: {
 					'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
+					// 'public/application.js': '<%= applicationJavaScriptFiles %>'
 				}
 			}
 		},
@@ -216,7 +209,4 @@ module.exports = function(grunt) {
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
-
-	// change the tasks in the list to your production tasks
-	grunt.registerTask('heroku', ['compass:dist', 'autoprefixer', 'imagemin']);
 };

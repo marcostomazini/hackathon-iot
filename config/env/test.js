@@ -1,21 +1,35 @@
 'use strict';
 
 module.exports = {
-	//db: 'mongodb://arquitetaweb:arqw3b@ds043082.mongolab.com:43082/heroku_app37384508',
-	db: 'mongodb://localhost/acomanda-test',
+	db: 'mongodb://localhost/angle-test',
 	port: 3001,
 	app: {
-		title: 'AComanda - Test Environment'
+		title: 'Angle - Test Environment'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
 		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
 		callbackURL: '/auth/facebook/callback'
 	},
+	twitter: {
+		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
+		clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+		callbackURL: '/auth/twitter/callback'
+	},
 	google: {
 		clientID: process.env.GOOGLE_ID || 'APP_ID',
 		clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
 		callbackURL: '/auth/google/callback'
+	},
+	linkedin: {
+		clientID: process.env.LINKEDIN_ID || 'APP_ID',
+		clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
+		callbackURL: '/auth/linkedin/callback'
+	},
+	github: {
+		clientID: process.env.GITHUB_ID || 'APP_ID',
+		clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
+		callbackURL: '/auth/github/callback'
 	},
 	mailer: {
 		from: process.env.MAILER_FROM || 'MAILER_FROM',
