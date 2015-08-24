@@ -1,55 +1,57 @@
-# H2Okay
-H2Okay foi o projeto apresentado no Hackathon 2015 no evento Ticnova Maringá.
+## H2Okay	
+    Projeto de automação criado para gerar indicadores com relação ao consumo de água, com intuito de conscientização e incentivar o controle residencial de gasto.
 
-Gerar modulo:
-<snippet>
-  <content><![CDATA[
-# ${1:H2Okay}
-	Projeto de automação criado para gerar indicadores com relação ao consumo de água, com intuito de conscientização e incentivar o controle residencial de gasto.
 
-## Instalação
-	Gerar modulo:
-	yo meanjs:crud-module <module-name>
-
-	Para dar um start no projeto local:
-	grunt
-
-	Para gerar um build
-	grunt build
-
-	Para gerar um build de producao:
-	grunt build:production
-
-	Para rodar os testes
-	grunt test
-
-## Funcionamento
-	Sensores medem o consumo pela quantidade de água que passa pelos 		hidrômetros e pela quantidade de água que sai das caixas d'água em tempo real, aplicando um algoritmo desenvolvido pela equipe, com os indicadores é possivel saber se existem vazamentos, pois se no hidrômetro marcar mais água do que tem na caixa e foi distribuido, é possivel saber que existe vazamento ou entrada de ar;
-	Grágicos também mostram se a população está consumindo mais do que as nascentes conseguem oferecer; quanto a populaçãp consome, por cidade, área e por familia.
-	Todos grágicos e indicadores atualizados em tempo real, inclusive o nivel da caixa d'água.
+## Resumo
+	Projeto de automação criado para gerar indicadores de nascentes, fundos de vale e gerar indicadores de consumo de água para controle e conscientização da população.
+	Através de sensores conseguimos saber em tempo real volume de chuva, umidade do solo ao redor das nascentes, fundos de vale e o nível de água das nascentes, com esses dados é possível prever se o nível de água irá aumentar ou diminuir nos próximos dias.
+	Sensores também medem o consumo pela quantidade de água que passa pelos hidrômetros e pela quantidade de água que sai das caixas d’água em tempo real, aplicando um algoritmo desenvolvido pela equipe é possível saber se existem vazamentos, pois, se pelo hidrômetro passa mais água do que sai da caixa, em algum lugar está vazando ou entrando ar. 
+	Através disso é possível saber, se a população está gastando mais do que a nascente produz, é possível saber, quanto a população consome, por cidade, por área, por bairro, por família e todos esses dados atualizados em gráficos em tempo real, inclusive o nível de água de cada caixa de água.
+	Todos gráficos e indicadores atualizados em tempo real, inclusive o nivel da caixa d'água.
 
 ## História
 	O Projeto foi desenvolvido no evento HACKATHON 2015 no evento Ticnova Maringá, onde três problemáticas foram colocadas em pauta, onde por times se escolhia uma delas, e em 24 horas de desafio, desenvolvemos o H2Okay.
+    
+    
+## Tecnologia utilizada
+* Arduino (platform)
+* Mqtt (protocol)
+* MEAN (MongoDB, ExpressJS, AngularJS, e Node.js)
+* Flotchart
+    
+    
+## Instalação
+
+ * Baixar dependencias
+
+
+	npm install
+	    
+ * Start no projeto local
+
+	
+	grunt
+
+* Gerar um build
+
+
+	grunt build
+
+* Gerar um build de producao:
+
+
+	grunt build:production
+
+* Rodar os testes
+
+
+	grunt test 
 
 ## Créditos
-	@LuanPignata
-	Luan Pignata
-	LuanPignata
-
-	@marcodiniz
-	Marco Diniz
-	marcodiniz
-	 
-	@marcostomazini
-	Marcos Tomazini
-	MarcosTomazini
-
-	@ricardomaleixo
-	Ricardo Martins Aleixo
-	ricardomaleixo
+[Luan Pignata](https://github.com/LuanPignata)	
+[Marco Diniz](https://github.com/marcodiniz)	
+[Marcos Tomazini](https://github.com/marcostomazini)	
+[Ricardo Martins Aleixo](https://github.com/ricardomaleixo)		
  
-## License
-	Afftasardem 
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
+ ## License 
+© 2015 This code is distributed under the MIT license.
