@@ -23,29 +23,26 @@
 ## Instalação
 
  * Baixar dependencias
+ 
+		npm install
 
-
-	npm install
 	    
  * Start no projeto local
-
 	
-	grunt
-
-* Gerar um build
+		grunt
 
 
-	grunt build
+ * Gerar um build
 
-* Gerar um build de producao:
+		grunt build
 
+ * Gerar um build de producao:
 
-	grunt build:production
+		grunt build:production
 
-* Rodar os testes
+ * Rodar os testes
 
-
-	grunt test 
+		grunt test 
 
 ## Créditos
 [Luan Pignata](https://github.com/LuanPignata)	
@@ -53,5 +50,5 @@
 [Marcos Tomazini](https://github.com/marcostomazini)	
 [Ricardo Martins Aleixo](https://github.com/ricardomaleixo)		
  
- ## License 
+## License
 © 2015 This code is distributed under the MIT license.
